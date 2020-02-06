@@ -312,7 +312,7 @@ body {
   background-color: lightgray; }
 
 .content {
-  width: 90%;
+  width: 92%;
   margin: 2rem auto 4rem auto;
   border: 1px lightgray solid;
   overflow: hidden;
@@ -387,3 +387,7 @@ body {
   border-bottom: 2px lightgray solid;
   margin-bottom: 8px !important;
   padding-bottom: 8px; }
+
+.content.option3 .additionalInfo {
+  font-size: 15px;
+  font-weight: 600; }
