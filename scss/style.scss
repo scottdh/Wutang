@@ -1,7 +1,15 @@
 @import "normalise.scss";
-@import "typography.scss";
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap");
+
+// Colours
+$background: hsla(225, 31, 20, 1);
+$secondaryText: hsla(0, 0, 100, 0.5);
+$buySide: hsla(184, 99, 36, 1);
+$sellSide: hsla(335, 70, 57, 1);
+$primary: hsla(184, 99, 36, 1);
+
+@import "typography.scss";
 
 * {
   box-sizing: border-box;
@@ -12,12 +20,6 @@ body {
   font-size: 16px;
   width: 100%;
 }
-
-// Colours
-$background: hsla(225, 31, 20, 1);
-$secondaryText: hsla(0, 0, 100, 0.5);
-$buySide: hsla(184, 99, 36, 1);
-$sellSide: hsla(335, 70, 57, 1);
 
 .artboard {
   position: relative;
@@ -48,6 +50,7 @@ nav {
       display: flex;
       align-items: centre;
       padding: 24px 16px;
+      border-left: 4px solid hsla(0, 0, 100, 0);
       .icon {
         min-width: 24px;
         min-height: 24px;
@@ -64,6 +67,7 @@ nav {
     }
     .active {
       color: hsla(0, 0, 100, 1);
+      border-left-color: $primary;
       .icon {
         background-color: hsla(0, 0, 100, 1);
       }
@@ -73,10 +77,10 @@ nav {
 
 .view {
   padding: 0 2rem;
+  padding-top: 96px;
 }
 
 .header {
-  padding-top: 112px;
   display: flex;
   width: 100%;
   margin-bottom: 40px;
@@ -193,6 +197,10 @@ nav {
     position: relative;
     width: 320px;
   }
+}
+
+#pairDetails nav ul li.active {
+  border-left: 0px;
 }
 // .additionalInfo.left {
 //   padding-left: 50%;

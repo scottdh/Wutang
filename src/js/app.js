@@ -1,75 +1,130 @@
-// // var bookmark = document.querySelector("#bookmark");
-// var additionalInfoRight = document.querySelector("#additionalRight");
-// var additionalInfoLeft = document.querySelector("#additionalLeft");
+var data = {
+  securities: [
+    {
+      isin: "XS1973630889",
+      name: "ZHPRHK 8 13/20 21/01/2023",
+      country_of_risk: "CHN",
+      bb_composite: "B",
+      industry_group: "Financials",
+      coupon_rate: 8.65,
+      maturity_date: "2023-01-21",
+      currency: "USD",
+      issuer_name: "Zhenro Properties Group Limited",
+      industry_sector: "Corporate"
+    },
+    {
+      isin: "XS0908570459",
+      name: "VW 3 3/10 22/03/2033",
+      country_of_risk: "DEU",
+      bb_composite: "BBB+",
+      industry_group: "Consumer Goods",
+      coupon_rate: 3.3,
+      maturity_date: "2033-03-22",
+      currency: "EUR",
+      issuer_name: "Volkswagen International Finance N.V.",
+      industry_sector: "Corporate"
+    },
+    {
+      isin: "XS1329671132",
+      name: "EXOIM 2 1/8 02/12/2022",
+      country_of_risk: "ITA",
+      bb_composite: "BBB+",
+      industry_group: "Consumer Goods",
+      coupon_rate: 2.125,
+      maturity_date: "2015-12-03",
+      currency: "EUR",
+      issuer_name: "EXOR N.V.",
+      industry_sector: "Corporate"
+    }
+  ],
+  getExpirySpan(security) {
+    var today = new Date.now();
+    console.log(security.maturity_date - today);
+  },
+  getRandomZscore() {
+    var min = 1;
+    var max = 4;
+    var random = Math.random() * (max - min) + min;
+    var zScore = random.toFixed(2);
+    return zScore;
+  }
+};
 
-// // bookmark.addEventListener(
-// //   "mouseover",
-// //   function() {
-// //     // if (!e.target === compareBox) return;
-// //     additionalInfoRight.classList.add("right");
-// //     additionalInfoLeft.classList.add("left");
-// //   },
-// //   false
-// // );
+navItems = [
+  {
+    icon: null,
+    label: "Dashboard",
+    artboard_ID: "dashboard"
+  },
+  {
+    icon: null,
+    label: "Trade ideas",
+    artboard_ID: "tradeIdeas"
+  },
+  {
+    icon: null,
+    label: "Bookmarks",
+    artboard_ID: "bookmarks"
+  }
+];
 
-// // bookmark.addEventListener(
-// //   "mouseout",
-// //   function() {
-// //     additionalInfoRight.classList.remove("right");
-// //     additionalInfoLeft.classList.remove("left");
-// //   },
-// //   false
-// // );
+var navMenus = Array.prototype.slice.call(document.querySelectorAll("nav"));
 
-// // window.addEventListener()
+var findArtboard = function(element) {
+  return element.closest("div.artboard").id;
+};
 
-// var group = document.querySelector("#bookmark");
-// var nodes = document.querySelectorAll(".box");
-// var total = nodes.length;
-// var ease = Power1.easeInOut;
-// var boxes = [];
+var createNav = function() {
+  navMenus.forEach(nav => {
+    var artboard = findArtboard(nav);
+    var html;
+    if (artboard === "pairDetails") {
+      html = `
+      <ul>
+        <li class="active">
+            <div>&larr;</div>
+            <label>Back</label>
+        </li>
+       </ul>`;
+    } else {
+      html =
+        "<ul>" +
+        `${navItems
+          .map(function(item) {
+            // if nav item matches artboard's ID, add active class
+            if (artboard === item.artboard_ID) {
+              return `<li class="active">
+                  <div class="icon"></div>
+                  <label>${item.label}</label>
+                </li>`;
+            } else {
+              return `<li>
+                  <div class="icon"></div>
+                  <label>${item.label}</label>
+                </li>`;
+            }
+          })
+          .join("")}` +
+        "</ul>";
+    }
 
-// for (var i = 0; i < total; i++) {
-//   var node = nodes[i];
+    nav.innerHTML = html;
+  });
+};
 
-//   // Initialize transforms on node
-//   TweenLite.set(node, { x: 0 });
+createNav();
 
-//   boxes[i] = {
-//     transform: node._gsTransform,
-//     x: node.offsetLeft,
-//     y: node.offsetTop,
-//     node
-//   };
-// }
-
-// bookmark.addEventListener("mouseenter", layout);
-// bookmark.addEventListener("mouseleave", layout);
-
-// function layout() {
-//   console.log("moo");
-//   additionalInfoLeft.classList.toggle("reorder");
-//   additionalInfoRight.classList.toggle("reorder");
-//   additionalInfoLeft.classList.toggle("left");
-//   additionalInfoRight.classList.toggle("right");
-
-//   for (var i = 0; i < total; i++) {
-//     var box = boxes[i];
-
-//     var lastX = box.x;
-//     var lastY = box.y;
-
-//     box.x = box.node.offsetLeft;
-//     box.y = box.node.offsetTop;
-
-//     // Continue if box hasn't moved
-//     if (lastX === box.x && lastY === box.y) continue;
-
-//     // Reversed delta values taking into account current transforms
-//     var x = box.transform.x + lastX - box.x;
-//     var y = box.transform.y + lastY - box.y;
-
-//     // Tween to 0 to remove the transforms
-//     TweenLite.fromTo(box.node, 0.5, { x, y }, { x: 0, y: 0, ease });
-//   }
-// }
+// `<ul>
+// <li>
+//   <div class="icon"></div>
+//   <label>Dashboard</label>
+// </li>
+// <li class="active">
+//   <div class="icon"></div>
+//   <label>Trade ideas</label>
+// </li>
+// <li>
+//   <div class="icon"></div>
+//   <label>Bookmarks</label>
+// </li>
+// </ul>`;

@@ -304,25 +304,21 @@ template {
 [hidden] {
   display: none; }
 
-* {
-  box-sizing: border-box; }
-
-body {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  width: 100%; }
-
-h1,
-.mainTitle {
+h1 {
   margin: 0;
   font-size: 1.75rem;
   line-height: 2rem;
   font-weight: 700; }
   @media (min-width: 1400px) {
-    h1,
-    .mainTitle {
+    h1 {
       font-size: 2rem;
       line-height: 2.5rem; } }
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  margin: 0; }
 
 h3 {
   font-size: 1rem;
@@ -330,7 +326,7 @@ h3 {
   font-weight: 600;
   margin: 0; }
 
-.preTitle {
+h3.preTitle {
   font-weight: normal;
   color: rgba(255, 255, 255, 0.5); }
 
@@ -349,6 +345,14 @@ label {
 
 .noWrap {
   white-space: nowrap; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  width: 100%; }
 
 .artboard {
   position: relative;
@@ -375,7 +379,8 @@ nav {
     nav ul li {
       display: flex;
       align-items: centre;
-      padding: 24px 16px; }
+      padding: 24px 16px;
+      border-left: 4px solid rgba(255, 255, 255, 0); }
       nav ul li .icon {
         min-width: 24px;
         min-height: 24px;
@@ -388,15 +393,16 @@ nav {
           nav ul li label {
             display: block; } }
     nav ul .active {
-      color: white; }
+      color: white;
+      border-left-color: #01abb7; }
       nav ul .active .icon {
         background-color: white; }
 
 .view {
-  padding: 0 2rem; }
+  padding: 0 2rem;
+  padding-top: 96px; }
 
 .header {
-  padding-top: 112px;
   display: flex;
   width: 100%;
   margin-bottom: 40px; }
@@ -489,3 +495,6 @@ nav {
     .sidebar {
       position: relative;
       width: 320px; } }
+
+#pairDetails nav ul li.active {
+  border-left: 0px; }

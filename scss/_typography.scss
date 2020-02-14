@@ -2,12 +2,12 @@
 
 h1 {
   margin: 0;
-  font-size: 1.75rem;
-  line-height: 2rem;
+  font-size: 1.75rem; // 28px
+  line-height: 2rem; // 32px
   font-weight: 700;
   @media (min-width: 1400px) {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: 2rem; // 32px
+    line-height: 2.5rem; // 48px
   }
 }
 
