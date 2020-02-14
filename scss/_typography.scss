@@ -1,0 +1,51 @@
+// Typography
+
+h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 700;
+  @media (min-width: 1400px) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+h3.preTitle {
+  font-weight: normal;
+  color: $secondaryText;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+label {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.secondary {
+  color: $secondaryText;
+}
+
+.noWrap {
+  white-space: nowrap;
+}

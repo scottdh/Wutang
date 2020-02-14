@@ -5,6 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap");
 html {
   line-height: 1.15;
   /* 1 */
@@ -307,87 +308,184 @@ template {
   box-sizing: border-box; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
-  background-color: lightgray; }
+  width: 100%; }
 
-.content {
-  width: 92%;
-  margin: 2rem auto 4rem auto;
+h1,
+.mainTitle {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 700; }
+  @media (min-width: 1400px) {
+    h1,
+    .mainTitle {
+      font-size: 2rem;
+      line-height: 2.5rem; } }
+
+h3 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  margin: 0; }
+
+.preTitle {
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.5); }
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
+  margin-bottom: 16px; }
+
+label {
+  font-size: 1rem;
+  line-height: 1.5rem; }
+
+.secondary {
+  color: rgba(255, 255, 255, 0.5); }
+
+.noWrap {
+  white-space: nowrap; }
+
+.artboard {
+  position: relative;
+  display: flex;
+  color: white;
+  margin: 2rem auto 4rem 0;
   border: 1px lightgray solid;
   overflow: hidden;
-  padding: 24px 0;
-  background-color: white; }
+  padding: 1.5rem 0 1.5rem 0;
+  background-color: #232b43; }
+
+nav {
+  min-width: 48px;
+  padding-top: 96px; }
+  @media (min-width: 1001px) {
+    nav {
+      min-width: 216px; } }
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5); }
+    nav ul li {
+      display: flex;
+      align-items: centre;
+      padding: 24px 16px; }
+      nav ul li .icon {
+        min-width: 24px;
+        min-height: 24px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 4px; }
+      nav ul li label {
+        margin-left: 16px;
+        display: none; }
+        @media (min-width: 1000px) {
+          nav ul li label {
+            display: block; } }
+    nav ul .active {
+      color: white; }
+      nav ul .active .icon {
+        background-color: white; }
+
+.view {
+  padding: 0 2rem; }
 
 .header {
-  padding-top: 100px;
+  padding-top: 112px;
   display: flex;
-  width: 100%; }
-  .header h4 {
-    margin: 0 0 4px 0;
-    font-weight: normal;
-    color: gray; }
-  .header h1 {
-    margin: 0 0 4px 0;
-    font-size: 1.5rem;
-    line-height: 1.2em; }
-  .header .additionalInfo {
-    font-size: 1rem;
-    font-weight: normal;
-    margin: 0;
-    line-height: 1.5rem; }
-  @media (min-width: 940px) {
-    .header h4 {
-      font-size: 1em; }
-    .header h1 {
-      font-size: 2rem; }
-    .header .additionalInfo {
-      font-size: 1em; } }
-
-.bookmark {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  text-align: center;
-  min-width: 100px;
-  height: 200px;
-  border: 1px lightgray solid;
-  margin: -156px 16px 24px 16px; }
-  .bookmark .bookmarkInfo {
-    display: flex; }
-
-.buySide {
-  width: 100%; }
-  .buySide .bondName {
-    border-left: 4px blue solid;
-    padding-left: 8px; }
-  .buySide h4 {
-    padding-left: 0; }
-  .buySide .additionalInfo {
-    padding-left: 12px; }
-
-.sellSide {
   width: 100%;
+  margin-bottom: 40px; }
+  .header .buySide {
+    width: 100%; }
+    .header .buySide .bondName {
+      border-left: 0.25rem #01abb7 solid;
+      padding-left: 8px;
+      margin-bottom: 0.5rem; }
+    .header .buySide .meta-data {
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 12px; }
+      .header .buySide .meta-data .box {
+        margin-right: 8px;
+        white-space: nowrap; }
+      .header .buySide .meta-data .highRisk {
+        font-weight: bold;
+        color: #de4585; }
+  .header .sellSide {
+    width: 100%;
+    text-align: right; }
+    .header .sellSide .bondName {
+      border-right: 0.25rem #de4585 solid;
+      padding-right: 8px; }
+    .header .sellSide .meta-data {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 12px; }
+      .header .sellSide .meta-data .box {
+        margin-left: 8px;
+        white-space: nowrap; }
+  @media (min-width: 1024px) {
+    .header .box {
+      background-color: #2c3654;
+      border-radius: 4px;
+      padding: 4px 8px; } }
+  .header .bookmark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    min-width: 100px;
+    height: 200px;
+    border: 1px lightgray solid;
+    border-radius: 4px;
+    margin: -156px 16px 24px 16px; }
+    .header .bookmark .bookmarkInfo {
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+    .header .bookmark p {
+      color: rgba(255, 255, 255, 0.5); }
+
+.graphs {
+  width: 100%;
+  margin: 40px auto 40px auto; }
+  .graphs img {
+    width: 100%;
+    height: auto; }
+
+.compareStats {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  margin: 0 auto 16px;
+  font-size: 1rem;
+  max-width: 440px;
+  border: 1px rgba(255, 255, 255, 0.5) solid;
+  border-radius: 4px; }
+  .compareStats div {
+    display: flex; }
+    .compareStats div label {
+      display: inline;
+      color: rgba(255, 255, 255, 0.5);
+      margin-right: 8px;
+      font-weight: 600; }
+    .compareStats div p {
+      margin: 0;
+      font-weight: bold; }
+
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 16px;
   text-align: right; }
-  .sellSide .bondName {
-    border-right: 4px red solid;
-    padding-right: 8px; }
-  .sellSide h4 {
-    padding-right: 0; }
-  .sellSide .additionalInfo {
-    padding-right: 12px; }
-
-.right {
-  text-align: right; }
-
-.left {
-  text-align: left; }
-
-.borderBottom {
-  border-bottom: 2px lightgray solid;
-  margin-bottom: 8px !important;
-  padding-bottom: 8px; }
-
-.content.option3 .additionalInfo {
-  font-size: 15px;
-  font-weight: 600; }
+  @media (min-width: 1280px) {
+    .sidebar {
+      position: relative;
+      width: 320px; } }

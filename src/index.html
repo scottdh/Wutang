@@ -8,20 +8,83 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="content">
-      <div class="header">
-        <div class="buySide">
-          <div class="bondName">
-            <h4>Guangzhou R&F Properties</h4>
-            <h1 class="ticker">GZRFPR 5 7/8 13/02/2023</h1>
+    <!-- <div class="userStory">
+      <h2>
+        I want to see more information about each bond when analysing a bond
+        pair.
+      </h2>
+      <p>
+        Users, when analysing a bonds pair, aren't able to see the relevant
+        attributes for each bond. This makes making comparisons more difficult.
+      </p>
+      <p><strong>Current details provided:</strong></p>
+      <img
+        src="./img/Screenshot 2020-02-06 at 10.25.38.png"
+        alt=""
+        style="margin-left: 280px"
+      />
+      <p>
+        <strong>Current bonds attributes visible:</strong>
+      </p>
+      <ol>
+        <li>ISIN <span class="positive">YES</span></li>
+        <li>Issuer name <span class="negative">NO</span></li>
+        <li>Ticker <span class="positive">YES</span></li>
+        <li>Country <span class="positive">YES</span></li>
+        <li>Risk <span class="positive">YES</span></li>
+        <li>Stock Group <span class="negative">NO</span></li>
+        <li>
+          Coupon rate <span class="positive">YES</span> (not shown in arguably
+          most common % format)
+        </li>
+        <li>Maturity date <span class="positive">YES</span></li>
+        <li>Type/Sector <span class="negative">NO</span></li>
+        <li>Residual duration <span class="negative">NO</span></li>
+        <li>Currency <span class="negative">NO</span></li>
+        <li>
+          Z-score <span class="negative">NO</span> (only calculable from graph)
+        </li>
+        <li>Similarity <span class="negative">NO</span></li>
+        <li>Reversion <span class="negative">NO</span></li>
+      </ol>
+    </div> -->
+
+    <div class="artboard">
+      <nav>
+        <ul>
+          <li>
+            <div class="icon"></div>
+            <label>Dashboard</label>
+          </li>
+          <li class="active">
+            <div class="icon"></div>
+            <label>Trade ideas</label>
+          </li>
+          <li>
+            <div class="icon"></div>
+            <label>Bookmarks</label>
+          </li>
+        </ul>
+      </nav>
+      <div class="view">
+        <div class="header">
+          <div class="buySide">
+            <div class="bondName">
+              <h3 class="preTitle">Guangzhou R&F Properties</h3>
+              <h1>GZRFPR <span class="noWrap">5 7/8</span> 13/02/2023</h1>
+              <h3>
+                XS1720054383 (USD)
+              </h3>
+            </div>
+            <div class="meta-data">
+              <div class="box">China</div>
+              <div class="box">Financials</div>
+              <div class="box highRisk">BB-</div>
+              <div class="box highRisk">3-5 years</div>
+            </div>
           </div>
-          <h2 class="additionalInfo">
-            China · Financials · BB- · USD · XS1720054383
-          </h2>
-        </div>
-        <div class="bookmark">
-          <div class="bookmarkInfo active" data-cy="bookmark">
-            <div>
+          <div class="bookmark">
+            <div class="bookmarkInfo active">
               <div class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -36,130 +99,59 @@
                   </g>
                 </svg>
               </div>
-              <h3 class="_18zb6k3">SH</h3>
-              <h4 class="_1msjved">a day ago</h4>
+              <h2>SH</h2>
+            </div>
+            <p>a day ago</p>
+          </div>
+          <div class="sellSide">
+            <div class="bondName">
+              <h3 class="preTitle">
+                Zhenro Properties Group Limited
+              </h3>
+              <h1 class="ticker">
+                ZHPRHK
+                <span class="noWrap">9 3/20</span> 08/03/2022
+              </h1>
+              <h3>
+                XS1960071303 (USD)
+              </h3>
+            </div>
+            <div class="" style="height: 8px; margin-right: 12px"></div>
+            <div class="meta-data">
+              <div class="box">China</div>
+              <div class="box">Financials</div>
+              <div class="box">B</div>
+              <div class="box">1-2 years</div>
             </div>
           </div>
         </div>
-        <div class="sellSide">
-          <div class="bondName">
-            <h4>Zhenro Properties Group Limited</h4>
-            <h1 class="ticker">ZHPRHK 9 3/20 08/03/2022</h1>
+        <div id="compareStuff" class="compareStats">
+          <div>
+            <label for="">Z-Score</label>
+            <p>3.05</p>
           </div>
-          <h2 class="additionalInfo">
-            China · Financials · B · USD · XS1960071303
-          </h2>
+          <div>
+            <label for="">Similarity</label>
+            <p>0.89</p>
+          </div>
+          <div>
+            <label for="">Reversion</label>
+            <p>22bp</p>
+          </div>
+        </div>
+        <!-- End of header -->
+        <div class="graphs">
+          <img src="./img/graphs.png" alt="graphs" />
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="profileMenu">
+          <h3>Eve Moneypenny</h3>
+          <p class="secondary">DEMO</p>
         </div>
       </div>
     </div>
 
-    <div class="content">
-      <div class="header">
-        <div class="buySide">
-          <div class="bondName">
-            <h4>Guangzhou R&F Properties</h4>
-            <h1 class="ticker">GZRFPR 5.875% 13/02/2023</h1>
-          </div>
-          <h2 class="additionalInfo">China</h2>
-          <h2 class="additionalInfo">Financials</h2>
-          <h2 class="additionalInfo">BB-</h2>
-          <h2 class="additionalInfo">USD</h2>
-          <h2 class="additionalInfo">XS1720054383</h2>
-        </div>
-        <div class="bookmark">
-          <div class="bookmarkInfo active" data-cy="bookmark">
-            <div>
-              <div class="icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <g fill="#F3AE4B">
-                    <path
-                      d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-              <h3 class="_18zb6k3">SH</h3>
-              <h4 class="_1msjved">a day ago</h4>
-            </div>
-          </div>
-        </div>
-        <div class="sellSide">
-          <div class="bondName">
-            <h4>Zhenro Properties Group Limited</h4>
-            <h1 class="ticker">ZHPRHK 9.150% 08/03/2022</h1>
-          </div>
-          <h2 class="additionalInfo">China</h2>
-          <h2 class="additionalInfo">Financials</h2>
-          <h2 class="additionalInfo">B</h2>
-          <h2 class="additionalInfo">USD</h2>
-          <h2 class="additionalInfo">XS1960071303</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="content option3">
-      <div class="header">
-        <div class="buySide">
-          <div class="bondName">
-            <h4>Guangzhou R&F Properties</h4>
-            <h1 class="ticker">GZRFPR 5.875% 13/02/2023 USD</h1>
-          </div>
-          <div
-            class="borderBottom"
-            style="height: 8px; margin-left: 12px;"
-          ></div>
-          <h2 class="additionalInfo right">China</h2>
-          <h2 class="additionalInfo right">Financials</h2>
-          <h2 class="additionalInfo right">BB-</h2>
-          <!-- <h2 class="additionalInfo right">USD</h2> -->
-          <h2 class="additionalInfo right">2 years, 45 days</h2>
-          <h2 class="additionalInfo right">XS1720054383</h2>
-        </div>
-        <div class="bookmark">
-          <div class="bookmarkInfo active" data-cy="bookmark">
-            <div>
-              <div class="icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <g fill="#F3AE4B">
-                    <path
-                      d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-              <h3 class="_18zb6k3">SH</h3>
-              <h4 class="_1msjved">a day ago</h4>
-            </div>
-          </div>
-        </div>
-        <div class="sellSide">
-          <div class="bondName">
-            <h4>Zhenro Properties Group Limited</h4>
-            <h1 class="ticker">ZHPRHK 9.150% 08/03/2022 USD</h1>
-          </div>
-          <div
-            class="borderBottom"
-            style="height: 8px; margin-right: 12px"
-          ></div>
-          <h2 class="additionalInfo left">China</h2>
-          <h2 class="additionalInfo left">Financials</h2>
-          <h2 class="additionalInfo left">B</h2>
-          <!-- <h2 class="additionalInfo left">USD</h2> -->
-          <h2 class="additionalInfo left">3 years, 8 days</h2>
-          <h2 class="additionalInfo left">XS1960071303</h2>
-        </div>
-      </div>
-    </div>
     <script src="./js/app.js"></script>
   </body>
 </html>
