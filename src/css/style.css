@@ -306,6 +306,7 @@ template {
 
 h1 {
   margin: 0;
+  margin-bottom: 2rem;
   font-size: 1.75rem;
   line-height: 2rem;
   font-weight: 700; }
@@ -314,11 +315,15 @@ h1 {
       font-size: 2rem;
       line-height: 2.5rem; } }
 
+.bondName h1 {
+  margin-bottom: 0; }
+
 h2 {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
-  margin: 0; }
+  margin: 0;
+  margin-bottom: 1rem; }
 
 h3 {
   font-size: 1rem;
@@ -345,6 +350,9 @@ label {
 
 .noWrap {
   white-space: nowrap; }
+
+table {
+  font-weight: 600; }
 
 * {
   box-sizing: border-box; }
@@ -380,7 +388,13 @@ nav {
       display: flex;
       align-items: centre;
       padding: 24px 16px;
-      border-left: 4px solid rgba(255, 255, 255, 0); }
+      border-left: 8px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 0px; }
+      nav ul li:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white; }
+        nav ul li:hover .icon {
+          background-color: white; }
       nav ul li .icon {
         min-width: 24px;
         min-height: 24px;
@@ -394,11 +408,12 @@ nav {
             display: block; } }
     nav ul .active {
       color: white;
-      border-left-color: #01abb7; }
+      border-color: #01a8b5; }
       nav ul .active .icon {
         background-color: white; }
 
 .view {
+  flex: 1;
   padding: 0 2rem;
   padding-top: 96px; }
 
@@ -409,7 +424,7 @@ nav {
   .header .buySide {
     width: 100%; }
     .header .buySide .bondName {
-      border-left: 0.25rem #01abb7 solid;
+      border-left: 0.25rem #00e6a9 double;
       padding-left: 8px;
       margin-bottom: 0.5rem; }
     .header .buySide .meta-data {
@@ -498,3 +513,50 @@ nav {
 
 #pairDetails nav ul li.active {
   border-left: 0px; }
+
+.newFilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem;
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  text-align: center; }
+
+.filtersArea {
+  margin-bottom: 2rem; }
+
+table {
+  width: 100%;
+  line-height: 1.5rem;
+  border-spacing: 0 0.5rem; }
+
+th {
+  text-align: left;
+  text-transform: uppercase; }
+
+td {
+  padding: 0 0.5rem; }
+
+td.sellSide {
+  border-left: 4px solid #de4585; }
+
+td.buySide {
+  border-left: 4px double #00e6a9; }
+
+.filterGroup {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding: 1rem; }
+
+.meta-data {
+  display: flex;
+  justify-content: flex-start; }
+  .meta-data .meta-tag {
+    margin-right: 8px;
+    white-space: nowrap;
+    background-color: #2c3654;
+    border-radius: 4px;
+    padding: 4px 8px; }

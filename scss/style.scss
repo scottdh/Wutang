@@ -5,9 +5,9 @@
 // Colours
 $background: hsla(225, 31, 20, 1);
 $secondaryText: hsla(0, 0, 100, 0.5);
-$buySide: hsla(184, 99, 36, 1);
+$buySide: rgba(0, 230, 169, 1);
 $sellSide: hsla(335, 70, 57, 1);
-$primary: hsla(184, 99, 36, 1);
+$primary: rgba(1, 168, 181, 1);
 
 @import "typography.scss";
 
@@ -50,7 +50,17 @@ nav {
       display: flex;
       align-items: centre;
       padding: 24px 16px;
-      border-left: 4px solid hsla(0, 0, 100, 0);
+      border-left: 8px solid hsla(0, 0, 100, 0.2);
+      margin-bottom: 0px;
+
+      &:hover {
+        background-color: hsla(0, 0, 100, 0.2);
+        color: hsla(0, 0, 100, 1);
+        .icon {
+          background-color: hsla(0, 0, 100, 1);
+        }
+      }
+
       .icon {
         min-width: 24px;
         min-height: 24px;
@@ -67,7 +77,8 @@ nav {
     }
     .active {
       color: hsla(0, 0, 100, 1);
-      border-left-color: $primary;
+      // background-color: $primary;
+      border-color: $primary;
       .icon {
         background-color: hsla(0, 0, 100, 1);
       }
@@ -76,6 +87,7 @@ nav {
 } // End of nav
 
 .view {
+  flex: 1;
   padding: 0 2rem;
   padding-top: 96px;
 }
@@ -88,7 +100,7 @@ nav {
   .buySide {
     width: 100%;
     .bondName {
-      border-left: 0.25rem $buySide solid;
+      border-left: 0.25rem $buySide double;
       padding-left: 8px;
       margin-bottom: 0.5rem;
     }
@@ -225,3 +237,69 @@ nav {
 //   display: flex;
 //   justify-content: flex-start;
 // }
+
+.newFilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 1rem;
+  border: 1px dashed $secondaryText;
+  border-radius: 4px;
+  text-align: center;
+}
+.filtersArea {
+  margin-bottom: 2rem;
+}
+
+table {
+  width: 100%;
+  line-height: 1.5rem;
+  border-spacing: 0 0.5rem;
+}
+
+th {
+  text-align: left;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 0 0.5rem;
+}
+
+td.sellSide {
+  border-left: 4px solid $sellSide;
+}
+
+td.buySide {
+  border-left: 4px double $buySide;
+}
+
+.filterGroup {
+  border: 1px solid $secondaryText;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding: 1rem;
+  // h2 {
+  //   margin-bottom: 2rem;
+  //   display: block;
+  //   position: absolute;
+  //   top: -1rem;
+  //   left: 0.5rem;
+  //   background-color: $background;
+  //   padding: 0 0.5rem 0 0.5rem;
+  // }
+}
+
+.meta-data {
+  display: flex;
+  justify-content: flex-start;
+  .meta-tag {
+    margin-right: 8px;
+    white-space: nowrap;
+    background-color: hsla(225, 31, 25, 1);
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+}

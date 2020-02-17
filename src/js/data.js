@@ -49,5 +49,3 @@ var data = {
     return zScore;
   }
 };
-
-export { data };

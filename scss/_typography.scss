@@ -2,6 +2,7 @@
 
 h1 {
   margin: 0;
+  margin-bottom: 2rem;
   font-size: 1.75rem; // 28px
   line-height: 2rem; // 32px
   font-weight: 700;
@@ -11,11 +12,16 @@ h1 {
   }
 }
 
+.bondName h1 {
+  margin-bottom: 0;
+}
+
 h2 {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
   margin: 0;
+  margin-bottom: 1rem;
 }
 
 h3 {
@@ -48,4 +54,8 @@ label {
 
 .noWrap {
   white-space: nowrap;
+}
+
+table {
+  font-weight: 600;
 }
