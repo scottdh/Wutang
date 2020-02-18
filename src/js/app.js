@@ -10,7 +10,8 @@ var data = {
       maturity_date: "2023-01-21",
       currency: "USD",
       issuer_name: "Zhenro Properties Group Limited",
-      industry_sector: "Corporate"
+      industry_sector: "Corporate",
+      new: true
     },
     {
       isin: "XS0908570459",
@@ -22,7 +23,8 @@ var data = {
       maturity_date: "2033-03-22",
       currency: "EUR",
       issuer_name: "Volkswagen International Finance N.V.",
-      industry_sector: "Corporate"
+      industry_sector: "Corporate",
+      new: true
     },
     {
       isin: "XS1329671132",
@@ -34,7 +36,8 @@ var data = {
       maturity_date: "2015-12-03",
       currency: "EUR",
       issuer_name: "EXOR N.V.",
-      industry_sector: "Corporate"
+      industry_sector: "Corporate",
+      new: true
     },
     {
       isin: "USU85969AC41",
@@ -156,6 +159,7 @@ var createIdeasTables = function() {
     var html = `
     <table>
       <thead>
+      <th scope="col"></th>
         <th scope="col">Buy</th>
         <th scope="col">Sell</th>
         <th scope="col">Z-score</th>
@@ -165,9 +169,9 @@ var createIdeasTables = function() {
       <tbody>`;
     html += data.securities
       .map(function(security, index) {
-        var moo = index + 1;
         var rowData = `
           <tr>
+          <td class="col_new">${security.new ? "New" : ""}</td>
             <td class="buySide">${security["name"]}</td>
             <td class="sellSide">${data.securities[index]["name"]}</td>
             <td class=>${data.getRandomZscore()}</td>
@@ -179,6 +183,10 @@ var createIdeasTables = function() {
       .join("");
     html += `</tbody>
     </table>
+    <div class="table_footer">
+    <div><p>Showing 5 of 120 ideas</p></div>
+    <div class="button"><a href="#">View all &rarr;</a></div>
+    </div>
           `;
     table.innerHTML = html;
   });

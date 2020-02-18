@@ -8,6 +8,7 @@ $secondaryText: hsla(0, 0, 100, 0.5);
 $buySide: rgba(0, 230, 169, 1);
 $sellSide: hsla(335, 70, 57, 1);
 $primary: rgba(1, 168, 181, 1);
+$shiny: rgba(243, 174, 75, 1);
 
 @import "typography.scss";
 
@@ -100,7 +101,7 @@ nav {
   .buySide {
     width: 100%;
     .bondName {
-      border-left: 0.25rem $buySide double;
+      border-left: 0.25rem $buySide solid;
       padding-left: 8px;
       margin-bottom: 0.5rem;
     }
@@ -242,9 +243,10 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  color: $primary;
   padding: 1rem 1rem;
   border: 1px dashed $secondaryText;
+  font-weight: 600;
   border-radius: 4px;
   text-align: center;
 }
@@ -256,6 +258,7 @@ table {
   width: 100%;
   line-height: 1.5rem;
   border-spacing: 0 0.5rem;
+  margin-bottom: 1rem;
 }
 
 th {
@@ -268,11 +271,37 @@ td {
 }
 
 td.sellSide {
-  border-left: 4px solid $sellSide;
+  position: relative;
+  &::before {
+    width: 4px;
+    height: 1rem;
+    content: "";
+    position: absolute;
+    left: 0px;
+    display: block;
+    margin-top: 4px;
+    background: $sellSide;
+  }
 }
 
 td.buySide {
-  border-left: 4px double $buySide;
+  position: relative;
+  &::before {
+    width: 4px;
+    height: 1rem;
+    content: "";
+    position: absolute;
+    left: 0px;
+    display: block;
+    margin-top: 4px;
+    background: $buySide;
+  }
+}
+
+td.col_new {
+  padding: 0 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: $shiny;
 }
 
 .filterGroup {
@@ -302,4 +331,19 @@ td.buySide {
     border-radius: 4px;
     padding: 4px 8px;
   }
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  color: $primary;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.table_footer {
+  display: flex;
+  justify-content: space-between;
+  color: $secondaryText;
 }

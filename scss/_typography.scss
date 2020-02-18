@@ -12,8 +12,14 @@ h1 {
   }
 }
 
-.bondName h1 {
-  margin-bottom: 0;
+.bondName {
+  h1 {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
 }
 
 h2 {
@@ -29,6 +35,7 @@ h3 {
   line-height: 1.5rem;
   font-weight: 600;
   margin: 0;
+  margin-bottom: 1rem;
 }
 
 h3.preTitle {

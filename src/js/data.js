@@ -10,7 +10,8 @@ var data = {
       maturity_date: "2023-01-21",
       currency: "USD",
       issuer_name: "Zhenro Properties Group Limited",
-      industry_sector: "Corporate"
+      industry_sector: "Corporate",
+      new: true
     },
     {
       isin: "XS0908570459",
