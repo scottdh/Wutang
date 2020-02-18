@@ -1,4 +1,7 @@
 @import "normalise.scss";
+@import "./fontawesome/scss/fontawesome.scss";
+@import "./fontawesome/scss/solid.scss";
+@import "./fontawesome/scss/brands.scss";
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap");
 
@@ -310,6 +313,7 @@ td.col_new {
   margin-bottom: 1rem;
   position: relative;
   padding: 1rem;
+  background-color: hsla(225, 31, 16, 1);
   ol {
     list-style: none;
     padding: 0;
@@ -324,6 +328,7 @@ td.col_new {
 .filterCard_grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1rem;
 }
 
 .meta-data {
@@ -351,6 +356,6 @@ td.col_new {
 
 .table_footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   color: $secondaryText;
 }

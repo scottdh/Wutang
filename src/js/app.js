@@ -68,6 +68,53 @@ var data = {
       ticker: "UNACEM",
       issuer_name: "Union Andina de Cementos",
       industry_sector: "Corporate"
+    },
+    {
+      isin: "XS1238166257",
+      name: "LANDMA 3 21/50 12/06/2020",
+      country_of_risk: "CHN",
+      bb_composite: "A",
+      industry_group: "Financials",
+      coupon_rate: 3.42,
+      maturity_date: "2020-06-12 00:00:00",
+      issue_date: "2015-06-12 00:00:00",
+      currency: "USD",
+      par_value: 1000,
+      ticker: "LANDMA",
+      issuer_name: "LANDMARK FUNDING 2015 LIMITED",
+      industry_sector: "Corporate"
+    },
+    {
+      isin: "XS1681519184",
+      name: "GSK 1 0 12/09/2026",
+      last_query_date: "2020-01-31 03:05:09.069627",
+      country_of_risk: "USA",
+      bb_composite: "A-",
+      industry_group: "Healthcare",
+      coupon_rate: 1,
+      maturity_date: "2026-09-12 00:00:00",
+      issue_date: "2017-09-12 00:00:00",
+      currency: "EUR",
+      par_value: 1000,
+      ticker: "GSK",
+      issuer_name: "GlaxoSmithKline Capital PLC",
+      industry_sector: "Corporate"
+    },
+    {
+      isin: "XS1807409450",
+      name: "HYNOE 0 7/8 10/16/23",
+      last_query_date: "2019-01-18 04:00:00.732769",
+      country_of_risk: "AUT",
+      bb_composite: "A",
+      industry_group: "Financials",
+      coupon_rate: 0.875,
+      maturity_date: "2023-10-16 00:00:00",
+      issue_date: "2018-04-16 00:00:00",
+      currency: "EUR",
+      par_value: 100000,
+      ticker: "HYNOE",
+      issuer_name: "",
+      industry_sector: "Corporate"
     }
   ],
   getExpirySpan(security) {
@@ -183,10 +230,7 @@ var createIdeasTables = function() {
       .join("");
     html += `</tbody>
     </table>
-    <div class="table_footer">
-    <div><p>Showing 5 of 120 ideas</p></div>
-    <div class="button"><a href="#">View all &rarr;</a></div>
-    </div>
+    
           `;
     table.innerHTML = html;
   });
