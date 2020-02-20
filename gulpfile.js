@@ -2,6 +2,7 @@ const gulp = require('gulp')
 const sass = require('gulp-sass')
 const browserSync = require('browser-sync').create()
 const sourcemaps = require('gulp-sourcemaps')
+const gulpif = require('gulp-if')
 const del = require('del')
 const webpack = require('webpack-stream')
 
@@ -38,16 +39,16 @@ gulp.task('copy:html', () =>
 gulp.task('styles', () => {
   return gulp
     .src('./src/scss/*.scss')
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(!args.b, sourcemaps.init()))
     .pipe(sass().on('error', sass.logError))
-    .pipe(sourcemaps.write())
+    .pipe(gulpif(!args.b, sourcemaps.write('.')))
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream())
 })
 gulp.task('scripts', () => {
   const settings = {
     mode: 'development',
-    devtool: 'source-map',
+    devtool: args.b ? '' : 'source-map',
     output: {
       filename: 'bundle.js'
     }
