@@ -19,19 +19,19 @@ const navItems = [
   }
 ];
 
-var navMenus = Array.prototype.slice.call(document.querySelectorAll("nav"));
-var ideasTables = Array.prototype.slice.call(
+const navMenus = Array.prototype.slice.call(document.querySelectorAll("nav"));
+const ideasTables = Array.prototype.slice.call(
   document.querySelectorAll(".tradeIdeas_table")
 );
 
-var findArtboard = function(element) {
+const findArtboard = (element) => {
   return element.closest("div.artboard").id;
 };
 
-var createNav = function() {
+const createNav = () => {
   navMenus.forEach(nav => {
-    var artboard = findArtboard(nav);
-    var html;
+    const artboard = findArtboard(nav);
+    let html;
     if (artboard === "pairDetails") {
       html = `
       <ul>
@@ -44,7 +44,7 @@ var createNav = function() {
       html =
         "<ul>" +
         `${navItems
-          .map(function(item) {
+          .map((item) => {
             // if nav item matches artboard's ID, add active class
             if (artboard === item.artboard_ID) {
               return `<li class="active">
@@ -66,9 +66,9 @@ var createNav = function() {
   });
 };
 
-var createIdeasTables = function() {
-  ideasTables.forEach(function(table) {
-    var html = `
+const createIdeasTables = () => {
+  ideasTables.forEach((table) => {
+    let html = `
     <table>
       <thead>
       <th scope="col"></th>
@@ -80,8 +80,8 @@ var createIdeasTables = function() {
       </thead>
       <tbody>`;
     html += securities
-      .map(function(security, index) {
-        var rowData = `
+      .map((security, index) => {
+        const rowData = `
           <tr>
           <td class="col_new">${security.new ? "New" : ""}</td>
             <td class="buySide">${security["name"]}</td>
