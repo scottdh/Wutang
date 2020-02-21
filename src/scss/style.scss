@@ -15,6 +15,9 @@ $shiny: rgba(243, 174, 75, 1);
 
 @import "typography.scss";
 
+.hide {
+  visibility: hidden;
+}
 * {
   box-sizing: border-box;
 }
@@ -29,20 +32,33 @@ body {
   position: relative;
   display: flex;
   color: white;
-  margin: 2rem auto 4rem 0;
+  margin: 0 auto 4rem 0;
   border: 1px lightgray solid;
   overflow: hidden;
-  padding: 1.5rem 0 1.5rem 0;
+  padding: 1.5rem 0 4rem 0;
   background-color: $background;
 }
 
 nav {
   min-width: 48px;
-  padding-top: 96px;
 
   @media (min-width: 1001px) {
     min-width: 216px;
   }
+
+  .mainLogo {
+    display: block;
+    background-image: url("../img/katana_logo_inIndex.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 1.5rem;
+    margin-left: 1.5rem;
+    margin-bottom: 2.5rem;
+    @media (min-width: 1001px) {
+      background-image: url("../img/katana_logo_platform.png");
+    }
+  }
+
   ul {
     list-style: none;
     padding: 0;
@@ -93,7 +109,7 @@ nav {
 .view {
   flex: 1;
   padding: 0 2rem;
-  padding-top: 96px;
+  padding-top: 4rem;
 }
 
 .header {
@@ -194,7 +210,6 @@ nav {
       display: inline;
       color: $secondaryText;
       margin-right: 8px;
-      font-weight: 600;
     }
     p {
       margin: 0;
@@ -253,7 +268,7 @@ nav {
   border-radius: 4px;
   text-align: center;
 }
-.filtersArea {
+.savedFilters {
   margin-bottom: 2rem;
 }
 
@@ -352,13 +367,26 @@ td.col_new {
   }
 }
 
-.button {
+button {
   padding: 0.5rem 1rem;
-  color: $primary;
+  background-color: $primary;
+  line-height: 1rem;
+  border: none;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: white;
   a {
     text-decoration: none;
     color: inherit;
   }
+}
+
+button.mini {
+  padding: 0.5rem 0.5rem;
+  border: none;
+  background: none;
+  color: $primary;
 }
 
 .table_footer {
@@ -369,16 +397,60 @@ td.col_new {
 
 .ideasSummary {
   list-style: none;
+
   padding: 0;
   font-size: 0.875rem;
   line-height: 1rem;
-  font-weight: 600;
   li {
+    vertical-align: middle;
     margin-bottom: 0.5rem;
+    display: inline-block;
+    margin-right: 1.5rem;
+    line-height: 1.5rem;
+    img {
+      height: 1rem;
+      margin-right: 0.25rem;
+    }
   }
 }
 
 .monitored {
   background-color: white;
   color: $background;
+}
+
+.filtersArea {
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border: 1px solid $secondaryText;
+  background-color: hsla(225, 31, 16, 1);
+
+  div {
+    margin-right: 1.5rem;
+    label {
+      color: $secondaryText;
+      i {
+        margin-left: 0.25rem;
+      }
+    }
+  }
+
+  button {
+    margin-left: auto;
+  }
+}
+
+.linkButton {
+  display: block;
+  padding: 0.5rem 1rem;
+  line-height: 1rem;
+  border: none;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: $primary;
+  text-decoration: none;
 }

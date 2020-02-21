@@ -32,7 +32,7 @@ const args = (argList => {
 // Component tasks
 gulp.task("clean", () => del("./dist", { force: true }));
 gulp.task("copy:fonts", () =>
-  gulp.src("./src/fonts").pipe(gulp.dest("./dist"))
+  gulp.src(["./src/fonts/**/*"]).pipe(gulp.dest("./dist/fonts"))
 );
 gulp.task("copy:images", () =>
   gulp.src(["./src/img/**/*"]).pipe(gulp.dest("./dist/img"))

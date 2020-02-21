@@ -33,12 +33,17 @@ const findArtboard = element => {
   return element.closest("div.artboard").id;
 };
 
+{
+  /* <img src='./img/katana_logo_platform.png' alt='katana logo'/> */
+}
+
 const createNav = () => {
   navMenus.forEach(nav => {
     const artboard = findArtboard(nav);
     let html;
     if (artboard === "pairDetails") {
       html = `
+      "<a href='#' class='mainLogo'></a>"
       <ul>
         <li class="active">
             <div>&larr;</div>
@@ -47,6 +52,7 @@ const createNav = () => {
        </ul>`;
     } else {
       html =
+        "<a href='#' class='mainLogo'></a>" +
         "<ul>" +
         `${navItems
           .map(item => {

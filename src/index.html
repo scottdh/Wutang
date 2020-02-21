@@ -12,20 +12,14 @@
       <nav></nav>
       <div class="view">
         <h1>Trade ideas</h1>
-        <ul class="ideasSummary secondary">
-          <li>2,876 bonds scanned</li>
-          <li>37,486 ideas</li>
-          <li>
-            45 ideas in Katana Index <span class="newHighlight">(17 new)</span>
-          </li>
-        </ul>
-        <div class="filtersArea">
+        <div class="savedFilters">
           <h3 class="secondary" style="text-transform: uppercase;">
-            Saved filters
+            Saved filters <button class="button mini">Hide</button>
           </h3>
-          <!-- <p>
-            Use filters to group trade ideas that align to your strategy for
-            easy tracking.
+          <!-- <p class="secondary">
+            You currently have no saved filters. Filter the table below to find
+            ideas that align to your stategy and save them for easier retrieval
+            later.
           </p> -->
           <div class="filterCard_grid">
             <div class="filterCard">
@@ -45,13 +39,8 @@
                   <span class="newHighlight">(2 new)</span>
                 </li>
               </ol>
-              <!-- <div class="newAlerts">
-                <p>·</p>
-                <img src="./img/katana_logo_inIndex.png" alt="" srcset="" />
-                <p>2 new ideas</p>
-              </div> -->
               <div class="table_footer">
-                <div class="button"><a href="#">View ideas &rarr;</a></div>
+                <a class="linkButton" href="#">View ideas &rarr;</a>
               </div>
             </div>
             <div class="filterCard">
@@ -68,7 +57,7 @@
                 <li><strong>6</strong> ideas in Katana Index</li>
               </ol>
               <div class="table_footer">
-                <div class="button"><a href="#">View ideas &rarr;</a></div>
+                <a class="linkButton" href="#">View ideas &rarr;</a>
               </div>
             </div>
           </div>
@@ -76,6 +65,33 @@
         <h3 class="secondary" style="text-transform: uppercase;">
           All ideas
         </h3>
+        <ul class="ideasSummary secondary">
+          <li><strong>Today:</strong></li>
+          <li>37,486 ideas generated</li>
+          <li>
+            <img src="./img/katana_logo_inIndex.png" alt="" />5 ideas in Katana
+            Index
+            <span class="newHighlight">(3 new added)</span>
+          </li>
+        </ul>
+        <div class="filtersArea">
+          <div class="filter_type">
+            <label for="">Type<i class="fas fa-caret-down"></i></label>
+          </div>
+          <div class="filter_country">
+            <label for="">Country<i class="fas fa-caret-down"></i></label>
+          </div>
+          <div class="filter_industry">
+            <label for="">Industry<i class="fas fa-caret-down"></i></label>
+          </div>
+          <div class="filter_rating">
+            <label for="">Rating<i class="fas fa-caret-down"></i></label>
+          </div>
+          <div class="filter_matrurity">
+            <label for="">Maturity<i class="fas fa-caret-down"></i></label>
+          </div>
+          <button class="button">Save filter</button>
+        </div>
         <div class="tradeIdeas_table"></div>
       </div>
       <div class="sidebar">
