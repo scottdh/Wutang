@@ -10,6 +10,7 @@
     "currency": "USD",
     "issuer_name": "Zhenro Properties Group Limited",
     "industry_sector": "Corporate",
+    "in_katana_index": true,
     "new": true
   },
   {
@@ -23,6 +24,7 @@
     "currency": "EUR",
     "issuer_name": "Volkswagen International Finance N.V.",
     "industry_sector": "Corporate",
+    "in_katana_index": true,
     "new": true
   },
   {
@@ -36,6 +38,7 @@
     "currency": "EUR",
     "issuer_name": "EXOR N.V.",
     "industry_sector": "Corporate",
+    "in_katana_index": true,
     "new": true
   },
   {
@@ -50,7 +53,8 @@
     "currency": "USD",
     "ticker": "SGLSJ",
     "issuer_name": "Stillwater Mining Company",
-    "industry_sector": "Corporate"
+    "industry_sector": "Corporate",
+    "in_katana_index": true
   },
   {
     "isin": "USP9451YAC77",
@@ -66,7 +70,8 @@
     "par_value": 1000,
     "ticker": "UNACEM",
     "issuer_name": "Union Andina de Cementos",
-    "industry_sector": "Corporate"
+    "industry_sector": "Corporate",
+    "in_katana_index": true
   },
   {
     "isin": "XS1238166257",
@@ -81,7 +86,8 @@
     "par_value": 1000,
     "ticker": "LANDMA",
     "issuer_name": "LANDMARK FUNDING 2015 LIMITED",
-    "industry_sector": "Corporate"
+    "industry_sector": "Corporate",
+    "is_monitored": true
   },
   {
     "isin": "XS1681519184",
@@ -114,5 +120,85 @@
     "ticker": "HYNOE",
     "issuer_name": "",
     "industry_sector": "Corporate"
+  },
+  {
+    "isin": "DE000A13R9J7",
+    "name": "LBANK 0 1/20 09/11/2021",
+    "last_query_date": "2019-12-11 03:09:03.287715",
+    "country_of_risk": "DEU",
+    "bb_composite": "AAA",
+    "industry_group": "Government",
+    "coupon_rate": 0.05,
+    "maturity_date": "2021-11-09 00:00:00",
+    "issue_date": "2016-02-09 00:00:00",
+    "currency": "EUR",
+    "par_value": 1000,
+    "ticker": "LBANK",
+    "issuer_name": "Landeskreditbank Baden-Wuerttemberg-Foerderbank-",
+    "industry_sector": "Government-related"
+  },
+  {
+    "isin": "XS0295018070",
+    "name": "TSCOLN 5 1/8 10/04/2047",
+    "last_query_date": "2020-01-31 03:10:13.562237",
+    "country_of_risk": "GBR",
+    "bb_composite": "BBB-",
+    "industry_group": "Consumer Services",
+    "coupon_rate": 5.125,
+    "maturity_date": "2047-04-10 00:00:00",
+    "issue_date": "2007-04-10 00:00:00",
+    "currency": "EUR",
+    "par_value": 1000,
+    "ticker": "TSCOLN",
+    "issuer_name": "TESCO PLC",
+    "industry_sector": "Corporate"
+  },
+  {
+    "isin": "XS0191154961",
+    "name": "VATFAL 5 3/8 04/29/24",
+    "last_query_date": "2019-01-18 04:00:00.732769",
+    "country_of_risk": "SWE",
+    "bb_composite": "BBB+",
+    "industry_group": "Utilities",
+    "coupon_rate": 5.375,
+    "maturity_date": "2024-04-29 00:00:00",
+    "issue_date": "2004-04-29 00:00:00",
+    "currency": "EUR",
+    "par_value": 1000,
+    "ticker": "VATFAL",
+    "issuer_name": "",
+    "industry_sector": "Corporate"
+  },
+  {
+    "isin": "DE000A19X8B2",
+    "name": "ANNGR 2 1/8 22/03/2030",
+    "last_query_date": "2020-01-31 03:11:28.706628",
+    "country_of_risk": "DEU",
+    "bb_composite": "BBB+",
+    "industry_group": "Financials",
+    "coupon_rate": 2.125,
+    "maturity_date": "2030-03-22 00:00:00",
+    "issue_date": "2018-03-22 00:00:00",
+    "currency": "EUR",
+    "par_value": 100000,
+    "ticker": "ANNGR",
+    "issuer_name": "Vonovia Finance BV",
+    "industry_sector": "Corporate"
+  },
+  {
+    "isin": "XS0592233729",
+    "name": "DEVPHI 5 1/2 25/03/2021",
+    "last_query_date": "2020-01-31 03:10:52.838935",
+    "country_of_risk": "PHL",
+    "bb_composite": "BBB",
+    "industry_group": "Government",
+    "coupon_rate": 5.5,
+    "maturity_date": "2021-03-25 00:00:00",
+    "issue_date": "2011-03-25 00:00:00",
+    "currency": "USD",
+    "par_value": 1000,
+    "ticker": "DEVPHI",
+    "issuer_name": "Development Bank of the Philippines",
+    "industry_sector": "Government-related"
   }
 ]

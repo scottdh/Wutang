@@ -1,6 +1,11 @@
 import { getExpirySpan, getRandomZscore, getRandomReversion } from "./utils";
 import securities from "./securities.json";
 
+const img_inKatanaIndex_new =
+  "<img src='./img/katana_logo_new.png' style='height: 16px;' />";
+const img_inKatanaIndex =
+  "<img src='./img/katana_logo_inIndex.png' style='height: 16px;' />";
+
 const navItems = [
   {
     icon: null,
@@ -24,7 +29,7 @@ const ideasTables = Array.prototype.slice.call(
   document.querySelectorAll(".tradeIdeas_table")
 );
 
-const findArtboard = (element) => {
+const findArtboard = element => {
   return element.closest("div.artboard").id;
 };
 
@@ -44,7 +49,7 @@ const createNav = () => {
       html =
         "<ul>" +
         `${navItems
-          .map((item) => {
+          .map(item => {
             // if nav item matches artboard's ID, add active class
             if (artboard === item.artboard_ID) {
               return `<li class="active">
@@ -67,7 +72,7 @@ const createNav = () => {
 };
 
 const createIdeasTables = () => {
-  ideasTables.forEach((table) => {
+  ideasTables.forEach(table => {
     let html = `
     <table>
       <thead>
@@ -83,8 +88,16 @@ const createIdeasTables = () => {
       .map((security, index) => {
         const rowData = `
           <tr>
-          <td class="col_new">${security.new ? "New" : ""}</td>
-            <td class="buySide">${security["name"]}</td>
+          <td class="col_new">${
+            security.in_katana_index
+              ? security.new
+                ? "·  " + img_inKatanaIndex
+                : img_inKatanaIndex
+              : ""
+          }</td>
+            <td class="buySide ${security.is_monitored ? "monitored" : ""}">${
+          security["name"]
+        }</td>
             <td class="sellSide">${securities[index]["name"]}</td>
             <td class=>${getRandomZscore()}</td>
             <td class=>${getRandomReversion()} bp</td>
@@ -95,6 +108,9 @@ const createIdeasTables = () => {
       .join("");
     html += `</tbody>
     </table>
+    <div class="tableFooter">
+      <div>Showing 1-20 of 37,486 ideas</div>
+    </div>
     
           `;
     table.innerHTML = html;
