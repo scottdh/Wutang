@@ -124,6 +124,9 @@ a {
 #pairDetails nav ul li.active {
   border-left: 0px;
 }
+#filterView nav ul li.active {
+  border-left: 0px;
+}
 
 td.sellSide {
   position: relative;
@@ -185,7 +188,7 @@ td.buySide {
   a {
     text-decoration: none;
   }
-  
+
   ol {
     list-style: none;
     padding: 0;

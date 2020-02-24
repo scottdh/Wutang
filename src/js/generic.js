@@ -3,24 +3,24 @@ import {
   getRandomReversion,
   KatanaIndexLogo,
   navItems
-} from './utils'
-import { securities } from './json'
+} from "./utils";
+import { securities } from "./json";
 
 export const createNav = () => {
-  document.querySelectorAll('#main-nav').forEach(nav => {
-    const artboard = nav.closest('div.artboard').id
-    let html
-    if (artboard === 'pairDetails') {
+  document.querySelectorAll("#main-nav").forEach(nav => {
+    const artboard = nav.closest("div.artboard").id;
+    let html;
+    if (artboard === "pairDetails" || artboard === "filterView") {
       html = `
       <ul>
         <li class="active">
             <div>&larr;</div>
             <label>Back</label>
         </li>
-       </ul>`
+       </ul>`;
     } else {
       html =
-        '<ul>' +
+        "<ul>" +
         `${navItems
           .map(item => {
             // if nav item matches artboard's ID, add active class
@@ -28,24 +28,24 @@ export const createNav = () => {
               return `<li class="active">
                   <div class="icon"></div>
                   <label>${item.label}</label>
-                </li>`
+                </li>`;
             } else {
               return `<li>
                   <div class="icon"></div>
                   <label>${item.label}</label>
-                </li>`
+                </li>`;
             }
           })
-          .join('')}` +
-        '</ul>'
+          .join("")}` +
+        "</ul>";
     }
 
-    nav.innerHTML = html
-  })
-}
+    nav.innerHTML = html;
+  });
+};
 
 export const createIdeasTables = () => {
-  document.querySelectorAll('.tradeIdeas_table').forEach(table => {
+  document.querySelectorAll(".tradeIdeas_table").forEach(table => {
     let html = `
       <table>
         <thead>
@@ -57,7 +57,7 @@ export const createIdeasTables = () => {
           <th></th>
         </thead>
         <tbody>
-      `
+      `;
 
     html += securities
       .map(
@@ -65,25 +65,25 @@ export const createIdeasTables = () => {
           <tr class="ideaRow">
             <td>
               <div class="status">
-                ${isNew ? '<span class="new-indicator">·</span>' : ''}
-                ${isIndexed ? KatanaIndexLogo : ''}
+                ${isNew ? '<span class="new-indicator">·</span>' : ""}
+                ${isIndexed ? KatanaIndexLogo : ""}
               </div>
             </td>
-            <td class="buySide ${isMonitored ? 'monitored' : ''}">${name}</td>
+            <td class="buySide ${isMonitored ? "monitored" : ""}">${name}</td>
             <td class="sellSide">${name}</td>
             <td class=>${getRandomZscore()}</td>
             <td class=>${getRandomReversion()}bp</td>
           </tr>
         `
       )
-      .join('')
+      .join("");
 
     html += `</tbody>
       </table>
       <div class="tableFooter">
         <div>Showing 1-20 of 37,486 ideas</div>
       </div>
-    `
-    table.innerHTML = html
-  })
-}
+    `;
+    table.innerHTML = html;
+  });
+};
