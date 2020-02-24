@@ -1,142 +1,83 @@
-import { getExpirySpan, getRandomZscore, getRandomReversion } from "./utils";
-import securities from "./securities.json";
+import { getLocal, setLocal } from './utils'
+import { createIdeasTables, createNav } from './generic'
 
-const img_inKatanaIndex_new =
-  "<img src='./img/katana_logo_new.png' style='height: 16px;' />";
-const img_inKatanaIndex =
-  "<img src='./img/katana_logo_inIndex.png' style='height: 16px;' />";
+createIdeasTables()
+createNav()
 
-const navItems = [
-  {
-    icon: null,
-    label: "Dashboard",
-    artboard_ID: "dashboard"
-  },
-  {
-    icon: null,
-    label: "Trade ideas",
-    artboard_ID: "tradeIdeas"
-  },
-  {
-    icon: null,
-    label: "Bookmarks",
-    artboard_ID: "bookmarks"
-  }
-];
+const presetFilters = getLocal('FILTERS')
+const toggleFilter = filter => {
+  const openClass = '--is-open'
+  const selected = filter.nextElementSibling
 
-const navMenus = Array.prototype.slice.call(document.querySelectorAll("nav"));
-const ideasTables = Array.prototype.slice.call(
-  document.querySelectorAll(".tradeIdeas_table")
-);
+  document
+    .querySelectorAll('.Filter__label')
+    .forEach(
+      label =>
+        label !== filter && label.classList.remove(`Filter__label${openClass}`)
+    )
+  filter.classList.toggle(`Filter__label${openClass}`)
 
-const findArtboard = element => {
-  return element.closest("div.artboard").id;
-};
+  document
+    .querySelectorAll('.FilterGroup')
+    .forEach(
+      group =>
+        group !== selected && group.classList.remove(`FilterGroup${openClass}`)
+    )
+  selected.classList.toggle(`FilterGroup${openClass}`)
+}
+const toggleFilters = () => {
+  const storedFilters = getLocal('FILTERS')
 
-{
-  /* <img src='./img/katana_logo_platform.png' alt='katana logo'/> */
+  Object.keys(storedFilters).forEach(key => {
+    const action = storedFilters[key].length ? 'add' : 'remove'
+
+    document
+      .querySelector(`[for=${key}`)
+      .classList[action](`Filter__label--is-selected`)
+  })
+}
+const selectOption = label => {
+  const { name, value } = label.previousElementSibling
+  const storedFilters = getLocal('FILTERS') || {}
+  const storedGroup = storedFilters[name] || []
+  let group = storedGroup.includes(value)
+    ? storedGroup.filter(item => item !== value)
+    : [...storedGroup, value]
+  const newFilters = { ...storedFilters, [name]: group }
+
+  label.parentNode.classList.toggle('FilterGroup__label--is-selected')
+  toggleFilters()
+  setLocal('FILTERS', newFilters)
+}
+const updateFilters = filters => {
+  Object.keys(filters).forEach(key => {
+    const selected = filters[key]
+    const options = document.querySelectorAll(`input[name=${key}]`)
+
+    options.forEach(option => {
+      if (!selected.includes(option.value)) return
+      option.parentNode.classList.toggle(`FilterGroup__label--is-selected`)
+    })
+  })
+}
+const saveFilter = () => {
+  console.log('Save', getLocal('FILTERS'))
 }
 
-const createNav = () => {
-  navMenus.forEach(nav => {
-    const artboard = findArtboard(nav);
-    let html;
-    if (artboard === "pairDetails") {
-      html = `
-      "<a href='#' class='mainLogo'></a>"
-      <ul>
-        <li class="active">
-            <div>&larr;</div>
-            <label>Back</label>
-        </li>
-       </ul>`;
-    } else {
-      html =
-        "<a href='#' class='mainLogo'></a>" +
-        "<ul>" +
-        `${navItems
-          .map(item => {
-            // if nav item matches artboard's ID, add active class
-            if (artboard === item.artboard_ID) {
-              return `<li class="active">
-                  <div class="icon"></div>
-                  <label>${item.label}</label>
-                </li>`;
-            } else {
-              return `<li>
-                  <div class="icon"></div>
-                  <label>${item.label}</label>
-                </li>`;
-            }
-          })
-          .join("")}` +
-        "</ul>";
-    }
+if (presetFilters) {
+  updateFilters(presetFilters)
+  toggleFilters()
+}
 
-    nav.innerHTML = html;
-  });
-};
-
-const createIdeasTables = () => {
-  ideasTables.forEach(table => {
-    let html = `
-    <table>
-      <thead>
-      <th scope="col"></th>
-        <th scope="col">Buy</th>
-        <th scope="col">Sell</th>
-        <th scope="col">Z-score</th>
-        <th scope="col">Reversion</th>
-        <th></th>
-      </thead>
-      <tbody>`;
-    html += securities
-      .map((security, index) => {
-        const rowData = `
-          <tr>
-          <td class="col_new">${
-            security.in_katana_index
-              ? security.new
-                ? "·  " + img_inKatanaIndex
-                : img_inKatanaIndex
-              : ""
-          }</td>
-            <td class="buySide ${security.is_monitored ? "monitored" : ""}">${
-          security["name"]
-        }</td>
-            <td class="sellSide">${securities[index]["name"]}</td>
-            <td class=>${getRandomZscore()}</td>
-            <td class=>${getRandomReversion()} bp</td>
-          </tr>
-          `;
-        return rowData;
-      })
-      .join("");
-    html += `</tbody>
-    </table>
-    <div class="tableFooter">
-      <div>Showing 1-20 of 37,486 ideas</div>
-    </div>
-    
-          `;
-    table.innerHTML = html;
-  });
-};
-console.log(ideasTables);
-createIdeasTables();
-createNav();
-
-// `<ul>
-// <li>
-//   <div class="icon"></div>
-//   <label>Dashboard</label>
-// </li>
-// <li class="active">
-//   <div class="icon"></div>
-//   <label>Trade ideas</label>
-// </li>
-// <li>
-//   <div class="icon"></div>
-//   <label>Bookmarks</label>
-// </li>
-// </ul>`;
+// Event handlers
+document
+  .querySelectorAll('.Filter__label')
+  .forEach(filter =>
+    filter.addEventListener('click', ({ target }) => toggleFilter(target))
+  )
+document
+  .querySelectorAll('.label')
+  .forEach(filter =>
+    filter.addEventListener('click', ({ target }) => selectOption(target))
+  )
+document.querySelector('#save-filter').addEventListener('click', saveFilter)
