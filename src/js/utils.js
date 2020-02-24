@@ -39,6 +39,13 @@ const getRandomReversion = () => {
   return random
 }
 
+const isEmpty = obj => {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) return false
+  }
+  return true
+}
+
 const STORAGE_PREFIX = 'KATANA_APP'
 
 const getLocal = name =>

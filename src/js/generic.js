@@ -46,7 +46,20 @@ export const createNav = () => {
   })
 }
 
-export const createIdeasTables = () => {
+export const createIdeasTables = (filters = {}) => {
+  const appliedFilters = Object.values(filters).length
+    ? Object.values(filters).reduce((mem, filter) => [...mem, ...filter])
+    : []
+  const rows = !!appliedFilters.length
+    ? securities.filter(row => {
+        const matches = Object.keys(filters).filter(key =>
+          filters[key].includes(row[key])
+        )
+
+        return matches.length === appliedFilters.length
+      })
+    : securities
+
   document.querySelectorAll('.tradeIdeas_table').forEach(table => {
     let html = `
       <table>
@@ -61,23 +74,25 @@ export const createIdeasTables = () => {
         <tbody>
       `
 
-    html += securities
-      .map(
-        ({ isIndexed, isNew, isMonitored, name }) => `
-          <tr class="ideaRow">
-            <td>
-              <div class="status">
-                ${isNew ? '<span class="new-indicator">·</span>' : ''}
-                ${isIndexed ? KatanaIndexLogo : ''}
-              </div>
-            </td>
-            <td class="buySide ${isMonitored ? 'monitored' : ''}">${name}</td>
-            <td class="sellSide">${name}</td>
-            <td class=>${getRandomZscore()}</td>
-            <td class=>${getRandomReversion()}bp</td>
-          </tr>
-        `
-      )
+    html += rows
+      .map(row => {
+        const { isIndexed, isNew, isMonitored, name } = row
+
+        return `
+            <tr class="ideaRow">
+              <td>
+                <div class="status">
+                  ${isNew ? '<span class="new-indicator">·</span>' : ''}
+                  ${isIndexed ? KatanaIndexLogo : ''}
+                </div>
+              </td>
+              <td class="buySide ${isMonitored ? 'monitored' : ''}">${name}</td>
+              <td class="sellSide">${name}</td>
+              <td class=>${getRandomZscore()}</td>
+              <td class=>${getRandomReversion()}bp</td>
+            </tr>
+          `
+      })
       .join('')
 
     html += `</tbody>

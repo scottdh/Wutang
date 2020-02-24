@@ -1,12 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
-import { getLocal, setLocal } from './utils'
+import { getLocal, setLocal, isEmpty } from './utils'
 import { createIdeasTables, createNav } from './generic'
 
-createIdeasTables()
 createNav()
-
-const presetFilters = getLocal('FILTERS')
-const savedFilters = getLocal('SAVED')
 
 const toggleFilter = filter => {
   const openClass = '--is-open'
@@ -54,6 +50,7 @@ const selectOption = label => {
 
   label.parentNode.classList.toggle('FilterGroup__label--is-selected')
   setLocal('FILTERS', newFilters)
+  createIdeasTables(newFilters)
   toggleFilters()
   toggleActions(false)
 }
@@ -127,12 +124,18 @@ const addSavedFilter = ({
     )
 }
 
-if (presetFilters) {
+const presetFilters = getLocal('FILTERS') || {}
+if (
+  Object.entries(presetFilters).length !== 0 &&
+  presetFilters[0].length !== 0
+) {
   updateFilters(presetFilters)
   toggleFilters()
   toggleActions(false)
 }
+createIdeasTables(presetFilters)
 
+const savedFilters = getLocal('SAVED')
 if (savedFilters) {
   savedFilters.forEach(filter => addSavedFilter(filter))
 }
@@ -178,7 +181,7 @@ document.getElementById('saveFilter').addEventListener('click', () => {
   addSavedFilter(newSaved)
 })
 document.getElementById('clearFilter').addEventListener('click', () => {
-  setLocal('FILTERS', null)
+  setLocal('FILTERS', {})
   toggleActions(true)
   window.location.reload()
 })
