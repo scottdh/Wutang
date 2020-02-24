@@ -175,6 +175,7 @@ td.buySide {
 }
 
 .filterCard {
+  position: relative;
   border: 1px solid $secondaryText;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
@@ -193,6 +194,20 @@ td.buySide {
     li {
       line-height: 1.5rem;
       margin-bottom: 0.5rem;
+    }
+  }
+
+  .deleteFilter {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  &:hover {
+    .deleteFilter {
+      opacity: 1;
     }
   }
 }

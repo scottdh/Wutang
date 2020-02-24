@@ -18,5 +18,8 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "uuid": "^7.0.0"
   }
 }

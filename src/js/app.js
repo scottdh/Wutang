@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import { getLocal, setLocal } from './utils'
 import { createIdeasTables, createNav } from './generic'
 
@@ -28,7 +29,7 @@ const toggleFilter = filter => {
   selected.classList.toggle(`FilterGroup${openClass}`)
 }
 const toggleFilters = () => {
-  const storedFilters = getLocal('FILTERS') || []
+  const storedFilters = getLocal('FILTERS') || {}
 
   Object.keys(storedFilters).forEach(key => {
     const action = storedFilters[key].length ? 'add' : 'remove'
@@ -38,18 +39,23 @@ const toggleFilters = () => {
       .classList[action](`Filter__label--is-selected`)
   })
 }
+const toggleActions = (disabled = true) => {
+  document.getElementById('saveFilter').disabled = disabled
+  document.getElementById('clearFilter').disabled = disabled
+}
 const selectOption = label => {
   const { name, value } = label.previousElementSibling
   const storedFilters = getLocal('FILTERS') || {}
-  const storedGroup = storedFilters[name] || []
-  let group = storedGroup.includes(value)
-    ? storedGroup.filter(item => item !== value)
-    : [...storedGroup, value]
-  const newFilters = { ...storedFilters, [name]: group }
+  const storedList = storedFilters[name] || []
+  let list = storedList.includes(value)
+    ? storedList.filter(item => item !== value)
+    : [...storedList, value]
+  const newFilters = { ...storedFilters, [name]: list }
 
   label.parentNode.classList.toggle('FilterGroup__label--is-selected')
-  toggleFilters()
   setLocal('FILTERS', newFilters)
+  toggleFilters()
+  toggleActions(false)
 }
 const updateFilters = filters => {
   Object.keys(filters).forEach(key => {
@@ -62,52 +68,95 @@ const updateFilters = filters => {
     })
   })
 }
-const addSavedFilter = (name, list) => {
+const deleteFilter = button => {
+  const filter = button.closest('.filterCard')
+  const filterId = filter.id
+  const savedFilters = getLocal('SAVED') || []
+  const updated = savedFilters.filter(({ id }) => id !== filterId)
+
+  setLocal('SAVED', updated)
+  filter.remove()
+
+  if (!updated.length) {
+    document.getElementById('noSavedFilters').style.display = 'block'
+  }
+}
+const addSavedFilter = ({
+  id,
+  name,
+  list,
+  numIdeas = 0,
+  numIndexed = 0,
+  numNew = 0
+}) => {
   const gridHolder = document.getElementById('SavedFilterList')
   const card = `
-    <div class="filterCard">
+    <div id="${id}" class="filterCard">
       <h3>${name}</h3>
       <div class="meta-data">
-        ${list.map(item => `<div class="meta-tag">${item}</div>`).join('')}
+        ${
+          list
+            ? list.map(item => `<div class="meta-tag">${item}</div>`).join('')
+            : ''
+        }
       </div>
       <ol>
-        <li><strong>43</strong> ideas</li>
+        <li><strong>${numIdeas}</strong> ideas</li>
         <li>
-          <strong>8</strong> ideas in Katana Index
-          <span class="highlight new-ideas">2 new</span>
+          <strong>${numIndexed}</strong> ideas in Katana Index
+          ${
+            numNew
+              ? `<span class="highlight new-ideas">${numNew} new</span>`
+              : ''
+          }
         </li>
       </ol>
       <div class="table_footer">
         <a class="linkButton" href="#">View ideas &rarr;</a>
       </div>
+      <a class="linkButton deleteFilter" href="#"><i class="fas fa-trash"></i></a>
     </div>
   `
 
   document.getElementById('noSavedFilters').style.display = 'none'
   gridHolder.innerHTML = card + gridHolder.innerHTML
+  document
+    .querySelectorAll('.deleteFilter')
+    .forEach(filter =>
+      filter.addEventListener('click', ({ target }) => deleteFilter(target))
+    )
 }
 
 if (presetFilters) {
   updateFilters(presetFilters)
   toggleFilters()
+  toggleActions(false)
 }
 
 if (savedFilters) {
-  savedFilters.forEach(({ name, list }) => addSavedFilter(name, list))
+  savedFilters.forEach(filter => addSavedFilter(filter))
 }
 
 // Event handlers
-document
-  .querySelectorAll('.Filter__label')
-  .forEach(filter =>
-    filter.addEventListener('click', ({ target }) => toggleFilter(target))
-  )
+document.addEventListener('click', ({ target }) => {
+  const openClass = '--is-open'
+  const openFilterLabel = document.querySelector(`.Filter__label${openClass}`)
+  const openFilterGroup = document.querySelector(`.FilterGroup${openClass}`)
+
+  if (!target.closest('.Filter') && openFilterLabel && openFilterGroup) {
+    openFilterLabel.classList.remove(`Filter__label${openClass}`)
+    openFilterGroup.classList.remove(`FilterGroup${openClass}`)
+  }
+})
+document.querySelectorAll('.Filter__label').forEach(filter => {
+  filter.addEventListener('click', ({ target }) => toggleFilter(target))
+})
 document
   .querySelectorAll('.label')
   .forEach(filter =>
     filter.addEventListener('click', ({ target }) => selectOption(target))
   )
-document.querySelector('#save-filter').addEventListener('click', () => {
+document.getElementById('saveFilter').addEventListener('click', () => {
   const now = new Date()
   const formattedNow = now.toLocaleDateString('en-GB', {
     dateStyle: 'medium',
@@ -119,13 +168,17 @@ document.querySelector('#save-filter').addEventListener('click', () => {
     ...filter
   ])
   const storedSaved = getLocal('SAVED') || []
-  const newSaved = [
-    {
-      name,
-      list
-    }
-  ]
+  const newSaved = {
+    id: uuidv4(),
+    name,
+    list
+  }
 
-  setLocal('SAVED', [...newSaved, ...storedSaved])
-  addSavedFilter(name, list)
+  setLocal('SAVED', [...storedSaved, newSaved])
+  addSavedFilter(newSaved)
+})
+document.getElementById('clearFilter').addEventListener('click', () => {
+  setLocal('FILTERS', null)
+  toggleActions(true)
+  window.location.reload()
 })
