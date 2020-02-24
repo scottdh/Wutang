@@ -5,6 +5,8 @@ createIdeasTables()
 createNav()
 
 const presetFilters = getLocal('FILTERS')
+const savedFilters = getLocal('SAVED')
+
 const toggleFilter = filter => {
   const openClass = '--is-open'
   const selected = filter.nextElementSibling
@@ -26,7 +28,7 @@ const toggleFilter = filter => {
   selected.classList.toggle(`FilterGroup${openClass}`)
 }
 const toggleFilters = () => {
-  const storedFilters = getLocal('FILTERS')
+  const storedFilters = getLocal('FILTERS') || []
 
   Object.keys(storedFilters).forEach(key => {
     const action = storedFilters[key].length ? 'add' : 'remove'
@@ -60,25 +62,13 @@ const updateFilters = filters => {
     })
   })
 }
-const addSavedFilter = filters => {
+const addSavedFilter = (name, list) => {
   const gridHolder = document.getElementById('SavedFilterList')
-  const now = new Date()
-  const formattedNow = now.toLocaleDateString('en-GB', {
-    dateStyle: 'medium',
-    timeStyle: 'long'
-  })
-  const name = `Untitled ${formattedNow}`
-  const filterList = Object.values(filters).reduce((mem, filter) => [
-    ...mem,
-    ...filter
-  ])
   const card = `
     <div class="filterCard">
       <h3>${name}</h3>
       <div class="meta-data">
-        ${filterList
-          .map(item => `<div class="meta-tag">${item}</div>`)
-          .join('')}
+        ${list.map(item => `<div class="meta-tag">${item}</div>`).join('')}
       </div>
       <ol>
         <li><strong>43</strong> ideas</li>
@@ -93,15 +83,17 @@ const addSavedFilter = filters => {
     </div>
   `
 
+  document.getElementById('noSavedFilters').style.display = 'none'
   gridHolder.innerHTML = card + gridHolder.innerHTML
-}
-const saveFilter = () => {
-  addSavedFilter(getLocal('FILTERS'))
 }
 
 if (presetFilters) {
   updateFilters(presetFilters)
   toggleFilters()
+}
+
+if (savedFilters) {
+  savedFilters.forEach(({ name, list }) => addSavedFilter(name, list))
 }
 
 // Event handlers
@@ -115,4 +107,25 @@ document
   .forEach(filter =>
     filter.addEventListener('click', ({ target }) => selectOption(target))
   )
-document.querySelector('#save-filter').addEventListener('click', saveFilter)
+document.querySelector('#save-filter').addEventListener('click', () => {
+  const now = new Date()
+  const formattedNow = now.toLocaleDateString('en-GB', {
+    dateStyle: 'medium',
+    timeStyle: 'long'
+  })
+  const name = `Untitled ${formattedNow}`
+  const list = Object.values(getLocal('FILTERS')).reduce((mem, filter) => [
+    ...mem,
+    ...filter
+  ])
+  const storedSaved = getLocal('SAVED') || []
+  const newSaved = [
+    {
+      name,
+      list
+    }
+  ]
+
+  setLocal('SAVED', [...newSaved, ...storedSaved])
+  addSavedFilter(name, list)
+})
