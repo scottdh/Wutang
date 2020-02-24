@@ -39,7 +39,19 @@
     cursor: pointer;
   }
 
-  &--is
+  &--empty {
+    padding: 0.5rem 1rem;
+    line-height: 1rem;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $primary;
+    background: none;
+  }
+
+  &--mini {
+    padding: 0.5rem 0.5rem;
+  }
 
   &--disabled,
   &:disabled,
@@ -50,24 +62,24 @@
   }
 }
 
-button {
-  padding: 0.5rem 1rem;
-  background-color: $primary;
-  line-height: 1rem;
-  border: none;
-  border-radius: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: white;
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-}
+// button {
+//   padding: 0.5rem 1rem;
+//   background-color: $primary;
+//   line-height: 1rem;
+//   border: none;
+//   border-radius: 2px;
+//   text-transform: uppercase;
+//   font-weight: 600;
+//   color: white;
+//   a {
+//     text-decoration: none;
+//     color: inherit;
+//   }
+// }
 
-button.mini {
-  padding: 0.5rem 0.5rem;
-  border: none;
-  background: none;
-  color: $primary;
-}
+// button.mini {
+//   padding: 0.5rem 0.5rem;
+//   border: none;
+//   background: none;
+//   color: $primary;
+// }

@@ -12,6 +12,7 @@ export const createNav = () => {
     let html
     if (artboard === 'pairDetails') {
       html = `
+      <a href='#' class='mainLogo'></a>
       <ul>
         <li class="active">
             <div>&larr;</div>
@@ -20,6 +21,7 @@ export const createNav = () => {
        </ul>`
     } else {
       html =
+        "<a href='#' class='mainLogo'></a>" +
         '<ul>' +
         `${navItems
           .map(item => {

@@ -15,7 +15,14 @@
 }
 
 .filtersArea {
-  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border: 1px solid $secondaryText;
+  background-color: hsla(225, 31, 16, 1);
 }
 
 .FilterRow {

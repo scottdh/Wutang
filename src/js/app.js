@@ -60,8 +60,43 @@ const updateFilters = filters => {
     })
   })
 }
+const addSavedFilter = filters => {
+  const gridHolder = document.getElementById('SavedFilterList')
+  const now = new Date()
+  const formattedNow = now.toLocaleDateString('en-GB', {
+    dateStyle: 'medium',
+    timeStyle: 'long'
+  })
+  const name = `Untitled ${formattedNow}`
+  const filterList = Object.values(filters).reduce((mem, filter) => [
+    ...mem,
+    ...filter
+  ])
+  const card = `
+    <div class="filterCard">
+      <h3>${name}</h3>
+      <div class="meta-data">
+        ${filterList
+          .map(item => `<div class="meta-tag">${item}</div>`)
+          .join('')}
+      </div>
+      <ol>
+        <li><strong>43</strong> ideas</li>
+        <li>
+          <strong>8</strong> ideas in Katana Index
+          <span class="highlight new-ideas">2 new</span>
+        </li>
+      </ol>
+      <div class="table_footer">
+        <a class="linkButton" href="#">View ideas &rarr;</a>
+      </div>
+    </div>
+  `
+
+  gridHolder.innerHTML = card + gridHolder.innerHTML
+}
 const saveFilter = () => {
-  console.log('Save', getLocal('FILTERS'))
+  addSavedFilter(getLocal('FILTERS'))
 }
 
 if (presetFilters) {
