@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { getLocal, setLocal, isEmpty } from './utils'
+import { getLocal, setLocal, getCounts } from './utils'
 import { createIdeasTables, createNav } from './generic'
 
 createNav()
@@ -125,10 +125,7 @@ const addSavedFilter = ({
 }
 
 const presetFilters = getLocal('FILTERS') || {}
-if (
-  Object.entries(presetFilters).length !== 0 &&
-  presetFilters[0].length !== 0
-) {
+if (Object.entries(presetFilters).length !== 0) {
   updateFilters(presetFilters)
   toggleFilters()
   toggleActions(false)
@@ -140,26 +137,7 @@ if (savedFilters) {
   savedFilters.forEach(filter => addSavedFilter(filter))
 }
 
-// Event handlers
-document.addEventListener('click', ({ target }) => {
-  const openClass = '--is-open'
-  const openFilterLabel = document.querySelector(`.Filter__label${openClass}`)
-  const openFilterGroup = document.querySelector(`.FilterGroup${openClass}`)
-
-  if (!target.closest('.Filter') && openFilterLabel && openFilterGroup) {
-    openFilterLabel.classList.remove(`Filter__label${openClass}`)
-    openFilterGroup.classList.remove(`FilterGroup${openClass}`)
-  }
-})
-document.querySelectorAll('.Filter__label').forEach(filter => {
-  filter.addEventListener('click', ({ target }) => toggleFilter(target))
-})
-document
-  .querySelectorAll('.label')
-  .forEach(filter =>
-    filter.addEventListener('click', ({ target }) => selectOption(target))
-  )
-document.getElementById('saveFilter').addEventListener('click', () => {
+const saveFilter = () => {
   const now = new Date()
   const formattedNow = now.toLocaleDateString('en-GB', {
     dateStyle: 'medium',
@@ -174,14 +152,48 @@ document.getElementById('saveFilter').addEventListener('click', () => {
   const newSaved = {
     id: uuidv4(),
     name,
-    list
+    list,
+    ...getCounts()
   }
 
   setLocal('SAVED', [...storedSaved, newSaved])
   addSavedFilter(newSaved)
+}
+
+const clearFocus = ({ target }) => {
+  const openClass = '--is-open'
+  const openFilterLabel = document.querySelector(`.Filter__label${openClass}`)
+  const openFilterGroup = document.querySelector(`.FilterGroup${openClass}`)
+
+  if (!target.closest('.Filter') && openFilterLabel && openFilterGroup) {
+    openFilterLabel.classList.remove(`Filter__label${openClass}`)
+    openFilterGroup.classList.remove(`FilterGroup${openClass}`)
+  }
+}
+
+// Event handlers
+document.addEventListener('click', clearFocus)
+document.getElementById('mainLogo').addEventListener('click', () => {
+  window.localStorage.clear()
+  window.location.reload()
 })
+document.querySelectorAll('.Filter__label').forEach(filter => {
+  filter.addEventListener('click', ({ target }) => toggleFilter(target))
+})
+document
+  .querySelectorAll('.label')
+  .forEach(filter =>
+    filter.addEventListener('click', ({ target }) => selectOption(target))
+  )
+document.getElementById('saveFilter').addEventListener('click', saveFilter)
 document.getElementById('clearFilter').addEventListener('click', () => {
   setLocal('FILTERS', {})
   toggleActions(true)
   window.location.reload()
+})
+document.getElementById('hideSaved').addEventListener('click', ({ target }) => {
+  target.innerText = target.innerText === 'HIDE' ? 'SHOW' : 'HIDE'
+  target.parentNode.nextElementSibling.classList.toggle(
+    'savedFilters__body--is-closed'
+  )
 })

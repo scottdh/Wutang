@@ -39,11 +39,14 @@ const getRandomReversion = () => {
   return random
 }
 
-const isEmpty = obj => {
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) return false
+const getCounts = () => {
+  const rows = [...document.querySelectorAll('.ideaRow')]
+
+  return {
+    numIdeas: rows.length,
+    numIndexed: rows.filter(row => row.classList.contains('isIndexed')).length,
+    numNew: rows.filter(row => row.classList.contains('isNew')).length
   }
-  return true
 }
 
 const STORAGE_PREFIX = 'KATANA_APP'
@@ -62,6 +65,7 @@ export {
   getRandomReversion,
   KatanaIndexLogo,
   navItems,
+  getCounts,
   STORAGE_PREFIX,
   getLocal,
   setLocal

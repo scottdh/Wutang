@@ -14,16 +14,18 @@
         <h1>Trade ideas</h1>
         <div class="savedFilters">
           <h3 class="secondary" style="text-transform: uppercase;">
-            Saved filters <button class="Button Button--empty Button--mini">Hide</button>
+            Saved filters <button id="hideSaved" class="Button Button--empty Button--mini">Hide</button>
           </h3>
 
-          <p id="noSavedFilters" class="secondary">
-            You currently have no saved filters. Filter the table below to find
-            ideas that align to your stategy and save them for easier retrieval
-            later.
-          </p>
-          
-          <div id="SavedFilterList" class="filterCard_grid"></div>
+          <div class="savedFilters__body">
+            <p id="noSavedFilters" class="secondary">
+              You currently have no saved filters. Filter the table below to find
+              ideas that align to your stategy and save them for easier retrieval
+              later.
+            </p>
+            
+            <div id="SavedFilterList" class="filterCard_grid"></div>
+          </div>
         </div>
         <h3 class="secondary" style="text-transform: uppercase;">
           All ideas
@@ -63,7 +65,7 @@
                   <label for="country_of_risk" class="Filter__label">Country</label>
                   <div class="dropdown-content FilterGroup">
                     <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="country_of_risk" value="CHN" />
+                      <input hidden type="checkbox" name="country_of_risk" value="China" />
                       <span class="label">China</span>
                       <span class="FilterGroup__count">(0)</span>
                     </label>
@@ -73,7 +75,7 @@
                       <span class="FilterGroup__count">(0)</span>
                     </label>
                     <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="country_of_risk" value="DEU" />
+                      <input hidden type="checkbox" name="country_of_risk" value="Germany" />
                       <span class="label">Germany</span>
                       <span class="FilterGroup__count">(0)</span>
                     </label>
@@ -131,17 +133,17 @@
                   <label for="maturity" class="Filter__label">Maturity</label>
                   <div class="dropdown-content FilterGroup">
                     <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="maturity" value="1-2" />
+                      <input hidden type="checkbox" name="maturity" value="1 - 2 years" />
                       <span class="label">1 - 2 years</span>
                       <span class="FilterGroup__count">(0)</span>
                     </label>
                     <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="maturity" value="3-5" />
+                      <input hidden type="checkbox" name="maturity" value="3 - 5 years" />
                       <span class="label">3 - 5 years</span>
                       <span class="FilterGroup__count">(0)</span>
                     </label>
                     <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="maturity" value="6-10" />
+                      <input hidden type="checkbox" name="maturity" value="6 - 10 years" />
                       <span class="label">6 - 10 years</span>
                       <span class="FilterGroup__count">(0)</span>
                     </label>
@@ -153,8 +155,8 @@
           </form>
 
           <div class="FilterActions">
-            <button id="saveFilter" class="Filters__action Button Button--small" disabled>Save Filter</button>
-            <button id="clearFilter" class="Filters__action Button Button--small" disabled>Clear Filter</button>
+            <button id="saveFilter" class="Filters__action Button Button--small" disabled>Save</button>
+            <button id="clearFilter" class="Filters__action Button Button--small Button--secondary" disabled>Clear</button>
           </div>
         </div>
 

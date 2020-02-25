@@ -12,6 +12,16 @@
 
 .savedFilters {
   margin-bottom: 2rem;
+
+  .savedFilters__body {
+    overflow: hidden;
+    max-height: 460px;
+    transition: max-height 0.25s ease-out;
+  
+    &--is-closed {
+      max-height: 0;
+    }
+  }
 }
 
 .filtersArea {
@@ -140,6 +150,7 @@
     }
 
     &__count {
+      display: none;
       color: inherit;
       text-align: right;
     }

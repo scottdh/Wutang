@@ -12,7 +12,7 @@ export const createNav = () => {
     let html
     if (artboard === 'pairDetails') {
       html = `
-      <a href='#' class='mainLogo'></a>
+      <a href='#' id='mainLogo' class='mainLogo'></a>
       <ul>
         <li class="active">
             <div>&larr;</div>
@@ -21,7 +21,7 @@ export const createNav = () => {
        </ul>`
     } else {
       html =
-        "<a href='#' class='mainLogo'></a>" +
+        "<a href='#' id='mainLogo' class='mainLogo'></a>" +
         '<ul>' +
         `${navItems
           .map(item => {
@@ -52,11 +52,14 @@ export const createIdeasTables = (filters = {}) => {
     : []
   const rows = !!appliedFilters.length
     ? securities.filter(row => {
-        const matches = Object.keys(filters).filter(key =>
-          filters[key].includes(row[key])
-        )
+        let shouldDisplay = {}
+        const matches = Object.keys(filters).filter(key => {
+          if (filters[key].length) {
+            shouldDisplay[key] = filters[key].includes(row[key])
+          }
+        })
 
-        return matches.length === appliedFilters.length
+        return !Object.values(shouldDisplay).includes(false)
       })
     : securities
 
@@ -79,7 +82,9 @@ export const createIdeasTables = (filters = {}) => {
         const { isIndexed, isNew, isMonitored, name } = row
 
         return `
-            <tr class="ideaRow">
+            <tr class="ideaRow ${isIndexed ? 'isIndexed' : ''} ${
+          isNew ? 'isNew' : ''
+        }">
               <td>
                 <div class="status">
                   ${isNew ? '<span class="new-indicator">·</span>' : ''}
