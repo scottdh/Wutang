@@ -39,9 +39,7 @@
     cursor: pointer;
   }
 
-  &--is
-
-  &--disabled,
+  &--is &--disabled,
   &:disabled,
   &[disabled] {
     background-color: $white20;
@@ -70,4 +68,9 @@ button.mini {
   border: none;
   background: none;
   color: $primary;
+}
+
+button.Button--small.secondary {
+  background-color: none;
+  color: pink;
 }
