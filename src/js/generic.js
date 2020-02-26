@@ -76,7 +76,7 @@ export const createIdeasTables = () => {
             <td class="sellSide">${name}</td>
             <td class=>${getRandomZscore()}</td>
             <td class=>${getRandomReversion()}bp</td>
-            <td class=>${getRandomComparisonV2()}</td>
+            <td class=>${getRandomComparison()}</td>
           </tr>
         `
       )
