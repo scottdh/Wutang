@@ -186,7 +186,7 @@ td.buySide {
   a {
     text-decoration: none;
   }
-  
+
   ol {
     list-style: none;
     padding: 0;
@@ -260,4 +260,13 @@ td.buySide {
 .monitored {
   background-color: white;
   color: $background;
+}
+
+input[type="text"] {
+  padding: 0.5rem 1rem;
+  line-height: 1.5rem;
+  border-radius: 0.25rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  font-weight: $bold;
 }

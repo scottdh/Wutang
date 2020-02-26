@@ -5,162 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Ideas: Card Filters</title>
+    <title>Monitor</title>
   </head>
   <body>
-    <div class="artboard" id="tradeIdeas">
+    <div class="artboard" id="monitor">
       <nav id="main-nav"></nav>
       <div class="view">
-        <h1>Trade ideas</h1>
-        <div class="savedFilters">
-          <h3 class="secondary" style="text-transform: uppercase;">
-            Saved filters <button id="hideSaved" class="Button Button--empty Button--mini">Hide</button>
-          </h3>
+        <h1>Monitor</h1>
+        <p class="secondary">
+          Add Bonds you are interested in monitoring and Katana will alert you when they appear in idea pairs, provide insights and and help you discover ideas with similar bonds.
+        </p>
+        <form action="">
+          <label for="isin">ISIN</label>
+          <input type="text" id="isin" /><button class="Button">Add</button>
+        </form>
 
-          <div class="savedFilters__body">
-            <p id="noSavedFilters" class="secondary">
-              You currently have no saved filters. Filter the table below to find
-              ideas that align to your stategy and save them for easier retrieval
-              later.
-            </p>
-            
-            <div id="SavedFilterList" class="filterCard_grid"></div>
-          </div>
+        <div class="monitor_table">
+          <table>
+            <thead>
+            <th scope="col"></th>
+              <th scope="col">Bond</th>
+              <th scope="col">Buy</th>
+              <th scope="col">Sell</th>
+            </thead>
+            <tbody>
         </div>
-        <h3 class="secondary" style="text-transform: uppercase;">
-          All ideas
-        </h3>
-        <ul class="ideasSummary secondary">
-          <li><strong>Today:</strong></li>
-          <li>37,486 ideas generated</li>
-          <li>
-            <img class="katanaIndexIcon" src="./img/katana_logo_inIndex.png" />15 ideas in Katana
-            Index
-            <span class="highlight new-ideas">5 new</span>
-          </li>
-        </ul>
-        <div class="filtersArea">
-          <form method="GET" action="/" class="FiltersForm">
-            <div class="FilterRow">
-          
-              <div class="Filters">
-                <div class="Filter">
-                  <input hidden type="checkbox" class="Filter__checkbox" />
-                  <label for="type" class="Filter__label">Type</label>
-                  <div class="dropdown-content FilterGroup">
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="type" value="Senior" />
-                      <span class="label">Senior</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="type" value="Subordinated" />
-                      <span class="label">Subordinated</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                  </div>
-                </div>
-                <div class="Filter">
-                  <input hidden type="checkbox" class="Filter__checkbox" />
-                  <label for="country_of_risk" class="Filter__label">Country</label>
-                  <div class="dropdown-content FilterGroup">
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="country_of_risk" value="China" />
-                      <span class="label">China</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="country_of_risk" value="USA" />
-                      <span class="label">USA</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="country_of_risk" value="Germany" />
-                      <span class="label">Germany</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                  </div>
-                </div>
-                <div class="Filter">
-                  <input hidden type="checkbox" class="Filter__checkbox" />
-                  <label for="industry_group" class="Filter__label">Industry</label>
-                  <div class="dropdown-content FilterGroup">
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="industry_group" value="Consumer Goods" />
-                      <span class="label">Consumer Goods</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="industry_group" value="Financials" />
-                      <span class="label">Financials</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="industry_group" value="Healthcare" />
-                      <span class="label">Healthcare</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                  </div>
-                </div>
-                <div class="Filter">
-                  <input hidden type="checkbox" class="Filter__checkbox" />
-                  <label for="bb_composite" class="Filter__label">Rating</label>
-                  <div class="dropdown-content FilterGroup">
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="bb_composite" value="A" />
-                      <span class="label">A</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="bb_composite" value="BBB" />
-                      <span class="label">BBB</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="bb_composite" value="BB" />
-                      <span class="label">BB</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="bb_composite" value="B" />
-                      <span class="label">B</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                  </div>
-                </div>
-                <div class="Filter">
-                  <input hidden type="checkbox" class="Filter__checkbox" />
-                  <label for="maturity" class="Filter__label">Maturity</label>
-                  <div class="dropdown-content FilterGroup">
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="maturity" value="1 - 2 years" />
-                      <span class="label">1 - 2 years</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="maturity" value="3 - 5 years" />
-                      <span class="label">3 - 5 years</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                    <label class="group-label FilterGroup__label">
-                      <input hidden type="checkbox" name="maturity" value="6 - 10 years" />
-                      <span class="label">6 - 10 years</span>
-                      <span class="FilterGroup__count">(0)</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-          </form>
-
-          <div class="FilterActions">
-            <button id="saveFilter" class="Filters__action Button Button--small" disabled>Save</button>
-            <button id="clearFilter" class="Filters__action Button Button--small Button--secondary" disabled>Clear</button>
-          </div>
-        </div>
-
-        <div class="tradeIdeas_table"></div>
       </div>
       <div class="sidebar">
         <div class="profileMenu">
