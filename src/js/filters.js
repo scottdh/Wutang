@@ -103,6 +103,45 @@ const clearFocus = ({ target }) => {
   }
 }
 
+const getFilterById = filterId => {
+  const savedFilters = getLocal('SAVED')
+  return savedFilters.find(({ id }) => id === filterId)
+}
+
+const saveName = filter => {
+  const input = document.getElementById('editName')
+  const title = input.previousElementSibling
+
+  if (title && input) {
+    title.style.display = 'block'
+    title.innerText = input.value
+    saveFilter({ ...filter, name: input.value })
+    try {
+      input.remove()
+    } catch {}
+  }
+}
+
+const editName = (element, filterId) => {
+  const text = element.innerText
+  const input = document.createElement('INPUT')
+  const filter = getFilterById(filterId)
+
+  input.setAttribute('type', 'text')
+  input.setAttribute('id', 'editName')
+  input.setAttribute('value', text)
+
+  element.style.display = 'none'
+  element.insertAdjacentElement('afterend', input)
+  input.focus()
+  input.select()
+
+  input.addEventListener('keydown', ({ key }) => {
+    if (key === 'Enter') saveName(filter)
+  })
+  input.addEventListener('blur', () => saveName(filter))
+}
+
 export {
   toggleFilter,
   toggleFilters,
@@ -110,5 +149,7 @@ export {
   updateFilters,
   saveFilter,
   clearFilter,
-  clearFocus
+  clearFocus,
+  editName,
+  getFilterById
 }

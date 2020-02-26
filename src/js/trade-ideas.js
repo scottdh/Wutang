@@ -7,7 +7,8 @@ import {
   updateFilters,
   saveFilter,
   clearFilter,
-  clearFocus
+  clearFocus,
+  editName
 } from './filters'
 
 const deleteFilter = button => {
@@ -24,18 +25,12 @@ const deleteFilter = button => {
   }
 }
 
-const addFilterCard = ({
-  id,
-  name,
-  list,
-  numIdeas = 0,
-  numIndexed = 0,
-  numNew = 0
-}) => {
+const addFilterCard = filter => {
+  const { id, name, list, numIdeas = 0, numIndexed = 0, numNew = 0 } = filter
   const gridHolder = document.getElementById('SavedFilterList')
   const card = `
     <div id="${id}" class="filterCard">
-      <h3>${name}</h3>
+      <h3 class="filterName">${name}</h3>
       <div class="meta-data">
         ${
           list
@@ -61,22 +56,25 @@ const addFilterCard = ({
     </div>
   `
 
-  const noSavedMessage = document.getElementById('noSavedFilters')
-  if (noSavedMessage) noSavedMessage.style.display = 'none'
-
-  if (gridHolder) gridHolder.innerHTML = card + gridHolder.innerHTML
+  document.getElementById('noSavedFilters').style.display = 'none'
+  gridHolder.innerHTML = card + gridHolder.innerHTML
 
   document
     .querySelectorAll('.deleteFilter')
-    .forEach(filter =>
-      filter.addEventListener('click', ({ target }) => deleteFilter(target))
+    .forEach(element =>
+      element.addEventListener('click', ({ target }) => deleteFilter(target))
     )
-
-  document.querySelectorAll('.viewIdeas').forEach(filter =>
-    filter.addEventListener('click', ({ target }) => {
+  document.querySelectorAll('.viewIdeas').forEach(element =>
+    element.addEventListener('click', ({ target }) => {
       const { id } = target.closest('.filterCard')
       setLocal('VIEW', id)
       window.location.pathname = './filter-view.html'
+    })
+  )
+  document.querySelectorAll('.filterName').forEach(element =>
+    element.addEventListener('click', ({ target }) => {
+      const { id } = target.closest('.filterCard')
+      editName(target, id)
     })
   )
 }

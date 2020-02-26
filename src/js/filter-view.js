@@ -7,14 +7,16 @@ import {
   selectOption,
   updateFilters,
   saveFilter,
-  clearFocus
+  clearFocus,
+  editName,
+  getFilterById
 } from './filters'
 
-const filterId = getLocal('VIEW')
-const savedFilters = getLocal('SAVED')
-const activeFilter = savedFilters.find(({ id }) => id === filterId)
+const currentFilterId = getLocal('VIEW')
+const activeFilter = getFilterById(currentFilterId)
 
 const deleteFilter = filterId => {
+  const savedFilters = getLocal('SAVED')
   const withoutFilter = savedFilters.filter(({ id }) => id !== filterId)
   setLocal('SAVED', withoutFilter)
   setLocal('FILTERS', {})
@@ -23,20 +25,22 @@ const deleteFilter = filterId => {
 const toggleActions = (disabled = true) => {
   document.getElementById('updateFilter').disabled = disabled
 }
+const populatePage = () => {
+  document.querySelector('.filterName').innerText = activeFilter.name
+  document.getElementById('numIdeas').innerText = activeFilter.numIdeas
+  document.getElementById('numIndexed').innerText = activeFilter.numIndexed
+  document.getElementById('numNew').innerText = activeFilter.numNew
 
-document.getElementById('filterName').innerText = activeFilter.name
-document.getElementById('numIdeas').innerText = activeFilter.numIdeas
-document.getElementById('numIndexed').innerText = activeFilter.numIndexed
-document.getElementById('numNew').innerText = activeFilter.numNew
-
-activeFilter.list.forEach(label => {
-  document.getElementById(
-    'metaData'
-  ).innerHTML += `<div class="meta-tag">${label}</div>`
-})
+  activeFilter.list.forEach(label => {
+    document.getElementById(
+      'metaData'
+    ).innerHTML += `<div class="meta-tag">${label}</div>`
+  })
+}
 
 // Init
 createNav()
+populatePage()
 setLocal('FILTERS', activeFilter.filters)
 updateFilters(activeFilter.filters)
 toggleFilters(activeFilter.filters)
@@ -66,4 +70,7 @@ document
   .addEventListener('click', () => setLocal('FILTERS', {}))
 document
   .getElementById('deleteFilter')
-  .addEventListener('click', () => deleteFilter(filterId))
+  .addEventListener('click', () => deleteFilter(currentFilterId))
+document
+  .querySelector('.filterName')
+  .addEventListener('click', ({ target }) => editName(target, currentFilterId))
