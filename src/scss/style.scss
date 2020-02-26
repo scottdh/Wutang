@@ -297,3 +297,12 @@ button.flat {
   color: $primary;
   background: none;
 }
+
+.similarityIcons {
+  font-size: 0.7rem;
+  display: flex;
+  // justify-content: space-between;
+  i {
+    margin-right: 0.5rem;
+  }
+}

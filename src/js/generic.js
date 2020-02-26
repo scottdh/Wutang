@@ -1,6 +1,8 @@
 import {
   getRandomZscore,
   getRandomReversion,
+  getRandomComparison,
+  getRandomComparisonV2,
   KatanaIndexLogo,
   navItems
 } from "./utils";
@@ -54,6 +56,7 @@ export const createIdeasTables = () => {
           <th scope="col">Sell</th>
           <th scope="col">Z-score</th>
           <th scope="col">Reversion</th>
+          <th scope="col">Similarity</th>
           <th></th>
         </thead>
         <tbody>
@@ -73,6 +76,7 @@ export const createIdeasTables = () => {
             <td class="sellSide">${name}</td>
             <td class=>${getRandomZscore()}</td>
             <td class=>${getRandomReversion()}bp</td>
+            <td class=>${getRandomComparisonV2()}</td>
           </tr>
         `
       )
