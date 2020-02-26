@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+body, html {
+  background-color: $background;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -70,7 +74,6 @@ a {
   display: flex;
   color: white;
   margin: 0 auto 4rem 0;
-  border: 1px lightgray solid;
   overflow: hidden;
   padding: 1.5rem 0 4rem 0;
   background-color: $background;
