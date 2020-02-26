@@ -17,9 +17,12 @@
     "gulp-if": "^3.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
+    "vinyl-named": "^1.1.0",
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "uuid": "^7.0.0"
   }
 }

@@ -19,6 +19,16 @@ body {
   width: 100%;
 }
 
+ol {
+  list-style: none;
+  padding: 0;
+
+  li {
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
 table {
   width: 100%;
   line-height: 1.5rem;
@@ -55,6 +65,7 @@ a {
 }
 
 .artboard {
+  min-height: 1024px;
   position: relative;
   display: flex;
   color: white;
@@ -66,6 +77,7 @@ a {
 }
 
 .view {
+  position: relative;
   flex: 1;
   padding: 0 2rem;
   padding-top: 4rem;
@@ -175,6 +187,9 @@ td.buySide {
 }
 
 .filterCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   border: 1px solid $secondaryText;
   border-radius: 0.25rem;
@@ -185,16 +200,6 @@ td.buySide {
 
   a {
     text-decoration: none;
-  }
-  
-  ol {
-    list-style: none;
-    padding: 0;
-
-    li {
-      line-height: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
   }
 
   .deleteFilter {
@@ -218,11 +223,18 @@ td.buySide {
   column-gap: 1rem;
 }
 
+.optionsBar {
+  position: absolute;
+  top: 5rem;
+  right: 0;
+  padding: 0 0 1rem 0;
+}
+
 .meta-data {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  flex: 1;
+
   .meta-tag {
+    display: inline-block;
     margin-right: 8px;
     margin-bottom: 8px;
     white-space: nowrap;

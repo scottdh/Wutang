@@ -5,6 +5,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const gulpif = require('gulp-if')
 const del = require('del')
 const webpack = require('webpack-stream')
+const named = require('vinyl-named')
 
 // Helper to get command line args
 const args = (argList => {
@@ -37,9 +38,7 @@ gulp.task('copy:fonts', () =>
 gulp.task('copy:images', () =>
   gulp.src('./src/img/**/*').pipe(gulp.dest('./dist/img'))
 )
-gulp.task('copy:html', () =>
-  gulp.src('./src/index.html').pipe(gulp.dest('./dist'))
-)
+gulp.task('copy:html', () => gulp.src('./src/*.html').pipe(gulp.dest('./dist')))
 gulp.task('styles', () => {
   return gulp
     .src('./src/scss/*.scss')
@@ -54,12 +53,13 @@ gulp.task('scripts', () => {
     mode: 'development',
     devtool: args.b ? '' : 'source-map',
     output: {
-      filename: 'bundle.js'
+      filename: '[name].bundle.js'
     }
   }
 
   return gulp
-    .src('./src/js/app.js')
+    .src(['./src/js/trade-ideas.js', './src/js/filter-view.js'])
+    .pipe(named())
     .pipe(webpack(settings, null, browserSync.reload))
     .pipe(gulp.dest('./dist/js'))
 })
@@ -74,7 +74,7 @@ gulp.task('watch', cb => {
 
   // Watch tasks
   // NB. copy:html and copy:images require a manual
-  // browser reload after undates
+  // browser reload after updates
   gulp.watch('./src/**/*.html', gulp.series('copy:html'))
   gulp.watch('./src/img/**/*', gulp.series('copy:images'))
   gulp.watch('./src/scss/**/*.scss', gulp.series('styles'))

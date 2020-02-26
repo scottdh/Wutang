@@ -8,31 +8,30 @@ import { securities } from './json'
 
 export const createNav = () => {
   document.querySelectorAll('#main-nav').forEach(nav => {
-    const artboard = nav.closest('div.artboard').id
-    let html
-    if (artboard === 'pairDetails') {
-      html = `
-      <a href='#' id='mainLogo' class='mainLogo'></a>
-      <ul>
-        <li class="active">
-            <div>&larr;</div>
-            <label>Back</label>
-        </li>
-       </ul>`
+    const { id } = nav.closest('div.artboard')
+    let html = '<a href="#" id="mainLogo" class="mainLogo"></a>'
+
+    if (id === 'filterView') {
+      html += `
+        <ul>
+          <li class="navItem navItem--no-border">
+            <a id="back" href="./">&larr; <label>Back</label></a>
+          </li>
+        </ul>
+      `
     } else {
-      html =
-        "<a href='#' id='mainLogo' class='mainLogo'></a>" +
+      html +=
         '<ul>' +
         `${navItems
           .map(item => {
             // if nav item matches artboard's ID, add active class
-            if (artboard === item.artboard_ID) {
-              return `<li class="active">
+            if (id === item.artboard_ID) {
+              return `<li class="navItem active">
                   <div class="icon"></div>
                   <label>${item.label}</label>
                 </li>`
             } else {
-              return `<li>
+              return `<li class="navItem">
                   <div class="icon"></div>
                   <label>${item.label}</label>
                 </li>`
