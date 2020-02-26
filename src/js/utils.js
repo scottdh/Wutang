@@ -16,6 +16,11 @@ const navItems = [
     icon: null,
     label: 'Bookmarks',
     id: 'bookmarks'
+  },
+  {
+    icon: null,
+    label: 'Monitor',
+    id: 'monitor'
   }
 ]
 
