@@ -45,8 +45,12 @@
 .optionsBar {
   position: absolute;
   top: 4.75rem;
-  right: 0;
+  right: 1rem;
   padding: 0 0 1rem 0;
+
+  @media (min-width: 1280px) {
+    right: 2rem;
+  }
 }
 
 .meta-data {

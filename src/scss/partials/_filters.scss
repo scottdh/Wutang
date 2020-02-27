@@ -1,29 +1,3 @@
-.newFilter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $primary;
-  padding: 1rem 1rem;
-  border: 1px dashed $secondaryText;
-  font-weight: 600;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.savedFilters {
-  margin-bottom: 2rem;
-
-  .savedFilters__body {
-    overflow: hidden;
-    max-height: 700px;
-    transition: max-height 0.25s ease-out;
-  
-    &--is-closed {
-      max-height: 0;
-    }
-  }
-}
-
 .filtersArea {
   display: flex;
   justify-content: space-between;
@@ -49,7 +23,11 @@
     cursor: pointer;
     position: relative;
     display: inline-block;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    
+    @media (min-width: 769px) {
+      margin-right: 2rem;
+    }
   }
 
   .Filter__checkbox {
@@ -69,10 +47,7 @@
     color: rgba(255, 255, 255, 0.5);
     user-select: none;
     cursor: pointer;
-    
-    @media (max-width: 800px) {
-      font-size: 1.2rem;
-    }
+    white-space: nowrap;
 
     &:after {
       width: 0;
@@ -191,6 +166,36 @@
   }
 }
 
+.newFilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary;
+  padding: 1rem 1rem;
+  border: 1px dashed $secondaryText;
+  font-weight: 600;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.savedFilters {
+  margin-bottom: 2rem;
+
+  .savedFilters__body {
+    overflow: hidden;
+    max-height: 700px;
+    transition: max-height 0.25s ease-out;
+  
+    &--is-closed {
+      max-height: 0;
+    }
+  }
+
+  .filterName {
+    margin-right: 1.25rem;
+  }
+}
+
 #editName {
   display: block;
   margin: 0 2rem 1rem 0;
@@ -203,5 +208,5 @@
 }
 
 #filterView #editName {
-  width: 100%;
+  width: 97%;
 }
