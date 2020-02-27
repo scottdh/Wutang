@@ -31,8 +31,36 @@ th {
   text-transform: uppercase;
 }
 
-td {
-  padding: 0 0.5rem;
+.tradeIdeas_table {
+  td {
+    padding: 0 0.5rem;
+  }
+  td.buySide {
+    position: relative;
+    &::before {
+      width: 4px;
+      height: 1rem;
+      content: "";
+      position: absolute;
+      left: 0px;
+      display: block;
+      margin-top: 4px;
+      background: $buySide;
+    }
+  }
+  td.sellSide {
+    position: relative;
+    &::before {
+      width: 4px;
+      height: 1rem;
+      content: "";
+      position: absolute;
+      left: 0px;
+      display: block;
+      margin-top: 4px;
+      background: $sellSide;
+    }
+  }
 }
 
 a {
@@ -63,6 +91,7 @@ a {
   overflow: hidden;
   padding: 1.5rem 0 4rem 0;
   background-color: $background;
+  min-height: 1024px;
 }
 
 .view {
@@ -123,34 +152,6 @@ a {
 
 #pairDetails nav ul li.active {
   border-left: 0px;
-}
-
-td.sellSide {
-  position: relative;
-  &::before {
-    width: 4px;
-    height: 1rem;
-    content: "";
-    position: absolute;
-    left: 0px;
-    display: block;
-    margin-top: 4px;
-    background: $sellSide;
-  }
-}
-
-td.buySide {
-  position: relative;
-  &::before {
-    width: 4px;
-    height: 1rem;
-    content: "";
-    position: absolute;
-    left: 0px;
-    display: block;
-    margin-top: 4px;
-    background: $buySide;
-  }
 }
 
 .ideaRow {
@@ -269,4 +270,8 @@ input[type="text"] {
   margin: 0.5rem;
   font-size: 1rem;
   font-weight: $bold;
+}
+
+#monitor form {
+  margin-bottom: 2rem;
 }

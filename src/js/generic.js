@@ -3,14 +3,14 @@ import {
   getRandomReversion,
   KatanaIndexLogo,
   navItems
-} from './utils'
-import { securities } from './json'
+} from "./utils";
+import { securities } from "./json";
 
 export const createNav = () => {
-  document.querySelectorAll('#main-nav').forEach(nav => {
-    const artboard = nav.closest('div.artboard').id
-    let html
-    if (artboard === 'pairDetails') {
+  document.querySelectorAll("#main-nav").forEach(nav => {
+    const artboard = nav.closest("div.artboard").id;
+    let html;
+    if (artboard === "pairDetails") {
       html = `
       <a href='#' id='mainLogo' class='mainLogo'></a>
       <ul>
@@ -18,11 +18,11 @@ export const createNav = () => {
             <div>&larr;</div>
             <label>Back</label>
         </li>
-       </ul>`
+       </ul>`;
     } else {
       html =
         "<a href='#' id='mainLogo' class='mainLogo'></a>" +
-        '<ul>' +
+        "<ul>" +
         `${navItems
           .map(item => {
             // if nav item matches artboard's ID, add active class
@@ -30,40 +30,40 @@ export const createNav = () => {
               return `<li class="active">
                   <div class="icon"></div>
                   <label>${item.label}</label>
-                </li>`
+                </li>`;
             } else {
               return `<li>
                   <div class="icon"></div>
                   <label>${item.label}</label>
-                </li>`
+                </li>`;
             }
           })
-          .join('')}` +
-        '</ul>'
+          .join("")}` +
+        "</ul>";
     }
 
-    nav.innerHTML = html
-  })
-}
+    nav.innerHTML = html;
+  });
+};
 
 export const createIdeasTables = (filters = {}) => {
   const appliedFilters = Object.values(filters).length
     ? Object.values(filters).reduce((mem, filter) => [...mem, ...filter])
-    : []
+    : [];
   const rows = !!appliedFilters.length
     ? securities.filter(row => {
-        let shouldDisplay = {}
+        let shouldDisplay = {};
         const matches = Object.keys(filters).filter(key => {
           if (filters[key].length) {
-            shouldDisplay[key] = filters[key].includes(row[key])
+            shouldDisplay[key] = filters[key].includes(row[key]);
           }
-        })
+        });
 
-        return !Object.values(shouldDisplay).includes(false)
+        return !Object.values(shouldDisplay).includes(false);
       })
-    : securities
+    : securities;
 
-  document.querySelectorAll('.tradeIdeas_table').forEach(table => {
+  document.querySelectorAll(".tradeIdeas_table").forEach(table => {
     let html = `
       <table>
         <thead>
@@ -75,37 +75,124 @@ export const createIdeasTables = (filters = {}) => {
           <th></th>
         </thead>
         <tbody>
-      `
+      `;
 
     html += rows
       .map(row => {
-        const { isIndexed, isNew, isMonitored, name } = row
+        const { isIndexed, isNew, isMonitored, name } = row;
 
         return `
-            <tr class="ideaRow ${isIndexed ? 'isIndexed' : ''} ${
-          isNew ? 'isNew' : ''
+            <tr class="ideaRow ${isIndexed ? "isIndexed" : ""} ${
+          isNew ? "isNew" : ""
         }">
               <td>
                 <div class="status">
-                  ${isNew ? '<span class="new-indicator">·</span>' : ''}
-                  ${isIndexed ? KatanaIndexLogo : ''}
+                  ${isNew ? '<span class="new-indicator">·</span>' : ""}
+                  ${isIndexed ? KatanaIndexLogo : ""}
                 </div>
               </td>
-              <td class="buySide ${isMonitored ? 'monitored' : ''}">${name}</td>
+              <td class="buySide ${isMonitored ? "monitored" : ""}">${name}</td>
               <td class="sellSide">${name}</td>
               <td class=>${getRandomZscore()}</td>
               <td class=>${getRandomReversion()}bp</td>
             </tr>
-          `
+          `;
       })
-      .join('')
+      .join("");
 
     html += `</tbody>
       </table>
       <div class="tableFooter">
         <div>Showing 1-20 of 37,486 ideas</div>
       </div>
-    `
-    table.innerHTML = html
-  })
-}
+    `;
+    table.innerHTML = html;
+  });
+};
+
+var monitorList = [];
+
+const createMonitorTable = function() {
+  console.log(monitorList);
+  document.querySelectorAll(".monitor_table").forEach(table => {
+    let html = `
+  <table>
+  <thead>
+    <th scope="col">Bond</th>
+    <th scope="col">Buy</th>
+    <th scope="col">Sell</th>
+    <th scope="col">Ideas</th>
+  </thead>
+  <tbody>
+    `;
+
+    html += monitorList
+      .map(row => {
+        const { name, amountBuySide, amountSellSide, ideas } = row;
+        return `
+      <tr>
+      <td>${name}</td>
+      <td class=${
+        amountBuySide > 0 ? "buySideColor" : "secondary"
+      }>${amountBuySide}</td>
+      <td class=${
+        amountSellSide > 0 ? "sellSideColor" : "secondary"
+      }>${amountSellSide}</td>
+      <td>${ideas}</td>
+      <td></td>
+    </tr>
+        `;
+      })
+      .join("");
+
+    html += `</tbody>
+    </table>
+    <div class="tableFooter">
+     
+    </div>
+  `;
+    table.innerHTML = html;
+  });
+};
+
+const addISIN = function(e) {
+  if (!e.target.id === "addISIN") return;
+  e.preventDefault();
+
+  if (Math.random() < 0.3) {
+  }
+  const getRandom = () => {
+    var min = 0;
+    var max = 12;
+    var random = Math.floor(Math.random() * (max - min) + min);
+    return random;
+  };
+
+  const getRandomIdea = () => {
+    var min = 0;
+    var max = 180;
+    var random = Math.floor(Math.random() * (max - min) + min);
+    return random;
+  };
+
+  if (Math.random() < 0.5) {
+    monitorList.push({
+      name: securities[getRandom()].name,
+      amountSellSide: 0,
+      amountBuySide: 0,
+      ideas: getRandomIdea()
+    });
+  } else {
+    monitorList.push({
+      name: securities[getRandom()].name,
+      amountSellSide: getRandom(),
+      amountBuySide: getRandom(),
+      ideas: getRandomIdea()
+    });
+  }
+
+  createMonitorTable();
+};
+
+document.addEventListener("click", addISIN, false);
+createMonitorTable();
