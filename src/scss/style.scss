@@ -115,10 +115,10 @@ a {
   top: 0;
   padding: 16px;
   text-align: right;
-  @media (min-width: 1280px) {
-    position: relative;
-    width: 320px;
-  }
+  // @media (min-width: 1280px) {
+  //   position: relative;
+  //   width: 320px;
+  // }
 }
 
 #pairDetails nav ul li.active {
