@@ -20,16 +20,17 @@ const deleteFilter = filterId => {
   const withoutFilter = savedFilters.filter(({ id }) => id !== filterId)
   setLocal('SAVED', withoutFilter)
   setLocal('FILTERS', {})
-  window.location.pathname = './'
+  window.location.pathname = '/pages/trade-ideas/'
 }
 const toggleActions = (disabled = true) => {
   document.getElementById('updateFilter').disabled = disabled
 }
 const populatePage = () => {
   document.querySelector('.filterName').innerText = activeFilter.name
-  document.getElementById('numIdeas').innerText = activeFilter.numIdeas
-  document.getElementById('numIndexed').innerText = activeFilter.numIndexed
-  document.getElementById('numNew').innerText = activeFilter.numNew
+  document.getElementById('numIdeas').innerText = activeFilter.counts.numIdeas
+  document.getElementById('numIndexed').innerText =
+    activeFilter.counts.numIndexed
+  document.getElementById('numNew').innerText = activeFilter.counts.numNew
 
   activeFilter.list.forEach(label => {
     document.getElementById(
@@ -58,7 +59,11 @@ document.querySelectorAll('.Filter__label').forEach(filter => {
 document.querySelectorAll('.label').forEach(filter =>
   filter.addEventListener('click', ({ target }) => {
     selectOption(target)
-    toggleActions(isEqual(getLocal('FILTERS'), activeFilter.filters))
+
+    const filters = getLocal('FILTERS')
+    const disableActions =
+      !Object.entries(filters).length || isEqual(filters, activeFilter.filters)
+    toggleActions(disableActions)
   })
 )
 document.getElementById('updateFilter').addEventListener('click', () => {

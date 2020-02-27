@@ -1,4 +1,5 @@
 import {
+  goBack,
   getRandomZscore,
   getRandomReversion,
   KatanaIndexLogo,
@@ -14,8 +15,8 @@ export const createNav = () => {
     if (id === 'filterView') {
       html += `
         <ul>
-          <li class="navItem navItem--no-border">
-            <a id="back" href="./">&larr; <label>Back</label></a>
+          <li id="back" class="navItem navItem--no-border">
+            &larr; <label>Back</label>
           </li>
         </ul>
       `
@@ -42,6 +43,9 @@ export const createNav = () => {
     }
 
     nav.innerHTML = html
+
+    const backButton = document.getElementById('back')
+    if (backButton) backButton.addEventListener('click', goBack)
   })
 }
 
@@ -52,7 +56,8 @@ export const createIdeasTables = (filters = {}) => {
   const rows = !!appliedFilters.length
     ? securities.filter(row => {
         let shouldDisplay = {}
-        const matches = Object.keys(filters).filter(key => {
+
+        Object.keys(filters).filter(key => {
           if (filters[key].length) {
             shouldDisplay[key] = filters[key].includes(row[key])
           }

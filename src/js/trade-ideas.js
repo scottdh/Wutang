@@ -26,7 +26,8 @@ const deleteFilter = button => {
 }
 
 const addFilterCard = filter => {
-  const { id, name, list, numIdeas = 0, numIndexed = 0, numNew = 0 } = filter
+  const { id, name, list, counts } = filter
+  const { numIdeas = 0, numIndexed = 0, numNew = 0 } = counts
   const gridHolder = document.getElementById('SavedFilterList')
   const card = `
     <div id="${id}" class="filterCard">
@@ -50,9 +51,9 @@ const addFilterCard = filter => {
         </li>
       </ol>
       <div class="table_footer">
-        <a class="Button Button--secondary Button--link viewIdeas" href="#">View ideas &rarr;</a>
+        <button class="Button Button--secondary Button--link viewIdeas">View ideas &rarr;</button>
       </div>
-      <a class="Button Button--secondary Button--link deleteFilter" href="#"><i class="fas fa-trash-alt"></i></a>
+      <button class="Button Button--secondary Button--link deleteFilter"><i class="fas fa-trash-alt"></i></button>
     </div>
   `
 
@@ -68,7 +69,7 @@ const addFilterCard = filter => {
     element.addEventListener('click', ({ target }) => {
       const { id } = target.closest('.filterCard')
       setLocal('VIEW', id)
-      window.location.pathname = './filter-view.html'
+      window.location.pathname = '/pages/trade-ideas/filter-view.html'
     })
   )
   document.querySelectorAll('.filterName').forEach(element =>
@@ -87,10 +88,10 @@ const toggleActions = (disabled = true) => {
 createNav()
 
 const presetFilters = getLocal('FILTERS') || {}
-if (Object.entries(presetFilters).length !== 0) {
+if (Object.entries(presetFilters).length) {
   updateFilters(presetFilters)
   toggleFilters(presetFilters)
-  toggleActions(false)
+  toggleActions(!Object.entries(getLocal('FILTERS')).length)
 }
 createIdeasTables(presetFilters)
 
@@ -111,7 +112,7 @@ document.querySelectorAll('.Filter__label').forEach(filter => {
 document.querySelectorAll('.label').forEach(filter =>
   filter.addEventListener('click', ({ target }) => {
     selectOption(target)
-    toggleActions(false)
+    toggleActions(!Object.entries(getLocal('FILTERS')).length)
   })
 )
 
@@ -120,7 +121,7 @@ document.getElementById('saveFilter').addEventListener('click', () => {
   clearFilter()
 })
 document.getElementById('clearFilter').addEventListener('click', () => {
-  toggleActions(true)
+  toggleActions()
   clearFilter()
 })
 document

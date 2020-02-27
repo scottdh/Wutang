@@ -38,7 +38,9 @@ gulp.task('copy:fonts', () =>
 gulp.task('copy:images', () =>
   gulp.src('./src/img/**/*').pipe(gulp.dest('./dist/img'))
 )
-gulp.task('copy:html', () => gulp.src('./src/*.html').pipe(gulp.dest('./dist')))
+gulp.task('copy:html', () =>
+  gulp.src('./src/**/*.html').pipe(gulp.dest('./dist'))
+)
 gulp.task('styles', () => {
   return gulp
     .src('./src/scss/*.scss')

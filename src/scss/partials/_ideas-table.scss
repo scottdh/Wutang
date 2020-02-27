@@ -1,0 +1,83 @@
+.compareStats {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  margin: 0 auto 16px;
+  font-size: 1rem;
+  max-width: 440px;
+  border: 1px $secondaryText solid;
+  border-radius: 4px;
+
+  div {
+    display: flex;
+
+    label {
+      display: inline;
+      color: $secondaryText;
+      margin-right: 8px;
+    }
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+}
+
+#pairDetails nav ul li.active {
+  border-left: 0px;
+}
+
+td.sellSide {
+  position: relative;
+  &::before {
+    width: 4px;
+    height: 1rem;
+    content: "";
+    position: absolute;
+    left: 0px;
+    display: block;
+    margin-top: 4px;
+    background: $sellSide;
+  }
+}
+
+td.buySide {
+  position: relative;
+  &::before {
+    width: 4px;
+    height: 1rem;
+    content: "";
+    position: absolute;
+    left: 0px;
+    display: block;
+    margin-top: 4px;
+    background: $buySide;
+  }
+}
+
+.ideaRow {
+  td:first-child {
+    width: 40px;
+    padding-left: 0;
+  }
+}
+
+.status {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 0.75rem 0 0;
+  font-size: 2rem;
+  color: $shiny;
+
+  img {
+    margin-left: 0.5rem;
+  }
+}
+
+.table_footer {
+  display: flex;
+  justify-content: flex-end;
+  color: $secondaryText;
+}

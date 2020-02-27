@@ -66,13 +66,13 @@ const saveFilter = (filter = {}) => {
   const filters = filter.filters || getLocal('FILTERS')
   const list = Object.values(filters).reduce((mem, value) => [...mem, ...value])
   const savedFilters = getLocal('SAVED') || []
+  const nameFormat = '[Untitled Filter] DD/MM/YYYY HH:mm:ss'
   const newSaved = {
     id: filter.id || uuidv4(),
-    name:
-      filter.name || moment().format('[Untitled Filter] DD/MM/YYYY HH:mm:ss'),
-    list,
+    name: filter.name || moment().format(nameFormat),
     filters,
-    ...getCounts()
+    list,
+    counts: filter.counts || getCounts()
   }
 
   if (filter.id) {
@@ -115,7 +115,7 @@ const saveName = filter => {
   if (title && input) {
     title.style.display = 'block'
     title.innerText = input.value
-    saveFilter({ ...filter, name: input.value })
+    saveFilter({ ...filter, name: input.value, ...getCounts() })
     try {
       input.remove()
     } catch {}

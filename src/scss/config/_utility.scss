@@ -1,0 +1,27 @@
+// Generic classes
+.hide {
+  visibility: hidden;
+}
+
+.highlight {
+  color: $shiny;
+}
+
+.subtle-text {
+  color: $secondaryText;
+}
+
+.center-vertically {
+  vertical-align: middle;
+}
+
+.new-ideas {
+  @extend small;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+}
+
+.monitored {
+  background-color: white;
+  color: $background;
+}

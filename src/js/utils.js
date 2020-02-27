@@ -1,5 +1,5 @@
 const KatanaIndexLogo =
-  '<img src="./img/katana_logo_inIndex.png" style="height: 16px;" />'
+  '<img src="/img/katana_logo_inIndex.png" style="height: 16px;" />'
 
 const navItems = [
   {
@@ -18,6 +18,10 @@ const navItems = [
     artboard_ID: 'bookmarks'
   }
 ]
+
+const goBack = () => {
+  window.history.back()
+}
 
 const getExpirySpan = security => {
   var today = new Date.now()
@@ -60,6 +64,7 @@ const setLocal = (name, value) =>
   )
 
 export {
+  goBack,
   getExpirySpan,
   getRandomZscore,
   getRandomReversion,

@@ -1,0 +1,114 @@
+.artboard {
+  min-height: 1024px;
+  position: relative;
+  display: flex;
+  color: white;
+  margin: 0 auto 4rem 0;
+  overflow: hidden;
+  padding: 1.5rem 0 4rem 0;
+  background-color: $background;
+}
+
+.view {
+  position: relative;
+  flex: 1;
+  padding: 0 2rem;
+  padding-top: 4rem;
+}
+
+.overview {
+  margin-bottom: 3rem;
+}
+
+.graphs {
+  width: 100%;
+  margin: 40px auto 40px auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 16px;
+  text-align: right;
+  @media (min-width: 1280px) {
+    position: relative;
+    width: 320px;
+  }
+}
+
+.optionsBar {
+  position: absolute;
+  top: 4.75rem;
+  right: 0;
+  padding: 0 0 1rem 0;
+}
+
+.meta-data {
+  flex: 1;
+
+  .meta-tag {
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    background-color: hsla(225, 31, 25, 1);
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+}
+
+.ideasSummary {
+  list-style: none;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1rem;
+
+  li {
+    vertical-align: middle;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    margin-right: 1.5rem;
+    line-height: 1.5rem;
+    
+    img {
+      height: 1rem;
+      margin-right: 0.25rem;
+    }
+  }
+}
+
+.page-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+  padding-bottom: 5vh;
+  font-size: 1.5rem;
+
+  #main-logo {
+    margin: 3rem 0;
+  }
+
+  &__list {
+    list-style-type: none;
+  }
+
+  &__item {
+    &:before {
+      content: '\00BB';
+      margin-left: 1rem;
+      padding: 0 0.5rem;
+      color: $secondaryText;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}
