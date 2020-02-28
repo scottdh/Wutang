@@ -25,7 +25,7 @@ export const createNav = () => {
         '<ul>' +
         `${navItems
           .map(
-            item => `<li id="${item.id}" class="navItem ${
+            item => `<li id="mainNav-${item.id}" class="navItem ${
               id === item.id ? 'active' : ''
             }">
               <div class="icon"></div>
@@ -98,7 +98,7 @@ export const createIdeasTables = (filters = {}) => {
             </tr>
             ${
               index === seperatorIndex
-                ? '</tbody><tbody class="notIndexed"><tr><th></th><th colspan="4">Alternative ideas</th></tr>'
+                ? '</tbody><tbody class="notIndexed"><tr><th></th><th colspan="4">Alternatives</th></tr>'
                 : ''
             }
           `

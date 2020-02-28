@@ -49,7 +49,9 @@ const addFilterCard = filter => {
               : ''
           }
         </li>
-        <li><strong>${numIdeas}</strong> idea${numIdeas === 1 ? '' : 's'}</li>
+        <li><strong>${numIdeas}</strong> alternative${
+    numIdeas === 1 ? '' : 's'
+  }</li>
       </ol>
       <div class="filterCard__footer">
         <button class="Button Button--secondary Button--link viewIdeas">View ideas &rarr;</button>
@@ -106,6 +108,9 @@ document.addEventListener('click', clearFocus)
 document.getElementById('mainLogo').addEventListener('click', () => {
   window.localStorage.clear()
   window.location.reload()
+})
+document.getElementById('mainNav-tradeIdeas').addEventListener('click', () => {
+  console.log(window.location)
 })
 document.querySelectorAll('.Filter__label').forEach(filter => {
   filter.addEventListener('click', ({ target }) => toggleFilter(target))
