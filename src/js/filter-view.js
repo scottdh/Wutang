@@ -1,5 +1,5 @@
 import { isEqual } from 'lodash'
-import { getLocal, setLocal } from './utils'
+import { getLocal, setLocal, getCounts } from './utils'
 import { createIdeasTables, createNav } from './generic'
 import {
   toggleFilter,
@@ -67,7 +67,11 @@ document.querySelectorAll('.label').forEach(filter =>
   })
 )
 document.getElementById('updateFilter').addEventListener('click', () => {
-  saveFilter({ ...activeFilter, filters: getLocal('FILTERS') })
+  saveFilter({
+    ...activeFilter,
+    filters: getLocal('FILTERS'),
+    counts: getCounts()
+  })
   window.location.reload()
 })
 document

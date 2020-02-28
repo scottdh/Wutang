@@ -12,7 +12,7 @@ export const createNav = () => {
     const { id } = nav.closest('div.artboard')
     let html = '<a href="#" id="mainLogo" class="mainLogo"></a>'
 
-    if (id === 'filterView') {
+    if (['filterView'].includes(id)) {
       html += `
         <ul>
           <li id="back" class="navItem navItem--no-border">
@@ -24,20 +24,14 @@ export const createNav = () => {
       html +=
         '<ul>' +
         `${navItems
-          .map(item => {
-            // if nav item matches artboard's ID, add active class
-            if (id === item.artboard_ID) {
-              return `<li class="navItem active">
-                  <div class="icon"></div>
-                  <label>${item.label}</label>
-                </li>`
-            } else {
-              return `<li class="navItem">
-                  <div class="icon"></div>
-                  <label>${item.label}</label>
-                </li>`
-            }
-          })
+          .map(
+            item => `<li id="${item.id}" class="navItem ${
+              id === item.id ? 'active' : ''
+            }">
+              <div class="icon"></div>
+              <label>${item.label}</label>
+            </li>`
+          )
           .join('')}` +
         '</ul>'
     }
@@ -68,21 +62,23 @@ export const createIdeasTables = (filters = {}) => {
     : securities
 
   document.querySelectorAll('.tradeIdeas_table').forEach(table => {
+    const lastIndexedRow = rows.find(row => !row.isIndexed)
+    const seperatorIndex = rows.indexOf(lastIndexedRow) - 1
     let html = `
-      <table>
+      <table class="tradeIdeas">
         <thead>
-        <th scope="col"></th>
+          <th scope="col"></th>
           <th scope="col">Buy</th>
           <th scope="col">Sell</th>
           <th scope="col">Z-score</th>
           <th scope="col">Reversion</th>
           <th></th>
         </thead>
-        <tbody>
+        <tbody class="indexed">
       `
 
     html += rows
-      .map(row => {
+      .map((row, index) => {
         const { isIndexed, isNew, isMonitored, name } = row
 
         return `
@@ -100,16 +96,27 @@ export const createIdeasTables = (filters = {}) => {
               <td class=>${getRandomZscore()}</td>
               <td class=>${getRandomReversion()}bp</td>
             </tr>
+            ${
+              index === seperatorIndex
+                ? '</tbody><tbody class="notIndexed"><tr><th></th><th colspan="4">Alternative ideas</th></tr>'
+                : ''
+            }
           `
       })
       .join('')
 
     html += `</tbody>
+        <tfoot class="secondary">
+          <tr>
+            <td colspan="5">Showing 1-20 of 37,486 ideas</td>
+          </tr>
+        </tfoot>
       </table>
-      <div class="tableFooter">
-        <div>Showing 1-20 of 37,486 ideas</div>
-      </div>
     `
     table.innerHTML = html
+
+    // document
+    //   .querySelectorAll('.isIndexed:last-child')
+    //   .classList.add('ideaSeperator')
   })
 }

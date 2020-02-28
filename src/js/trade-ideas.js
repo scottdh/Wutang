@@ -40,15 +40,15 @@ const addFilterCard = filter => {
         }
       </div>
       <ol>
-        <li><strong>${numIdeas}</strong> ideas</li>
         <li>
-          <strong>${numIndexed}</strong> ideas in Katana Index
+          <strong>${numIndexed}</strong> opportunities
           ${
             numNew
               ? `<span class="highlight new-ideas">${numNew} new</span>`
               : ''
           }
         </li>
+        <li><strong>${numIdeas}</strong> ideas</li>
       </ol>
       <div class="table_footer">
         <button class="Button Button--secondary Button--link viewIdeas">View ideas &rarr;</button>

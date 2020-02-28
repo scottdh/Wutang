@@ -27,57 +27,82 @@
   border-left: 0px;
 }
 
-td.sellSide {
-  position: relative;
-  &::before {
-    width: 4px;
-    height: 1rem;
-    content: "";
-    position: absolute;
-    left: 0px;
-    display: block;
-    margin-top: 4px;
-    background: $sellSide;
+.tradeIdeas {
+  td.sellSide {
+    position: relative;
+    &::before {
+      width: 4px;
+      height: 1rem;
+      content: '';
+      position: absolute;
+      left: 0px;
+      display: block;
+      margin-top: 4px;
+      background: $sellSide;
+    }
   }
-}
 
-td.buySide {
-  position: relative;
-  &::before {
-    width: 4px;
-    height: 1rem;
-    content: "";
-    position: absolute;
-    left: 0px;
-    display: block;
-    margin-top: 4px;
-    background: $buySide;
+  td.buySide {
+    position: relative;
+    &::before {
+      width: 4px;
+      height: 1rem;
+      content: '';
+      position: absolute;
+      left: 0px;
+      display: block;
+      margin-top: 4px;
+      background: $buySide;
+    }
   }
-}
 
-.ideaRow {
-  td:first-child {
-    width: 40px;
-    padding-left: 0;
+  .ideaRow {
+    td:first-child {
+      width: 40px;
+      padding-left: 0;
+    }
   }
-}
 
-.status {
-  width: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0 0.75rem 0 0;
-  font-size: 2rem;
-  color: $shiny;
-
-  img {
-    margin-left: 0.5rem;
+  .status {
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 0.75rem 0 0;
+    font-size: 2rem;
+    color: $shiny;
+  
+    img {
+      margin-left: 0.5rem;
+    }
   }
-}
 
-.table_footer {
-  display: flex;
-  justify-content: flex-end;
-  color: $secondaryText;
+  tbody.notIndexed tr {
+    &:first-child {
+      th {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid $white20;
+        color: $secondaryText;
+
+        &:first-child {
+          border: 0;
+        }
+      }
+    }
+    &:nth-child(2) {
+      td {
+        padding-top: 1rem;
+      }
+    }
+  }
+
+  tfoot {
+    color: $secondaryText;
+    font-weight: 400;
+
+    td {
+      padding: 1.5rem 0 0;
+    }
+  }
 }

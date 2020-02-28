@@ -5,17 +5,17 @@ const navItems = [
   {
     icon: null,
     label: 'Dashboard',
-    artboard_ID: 'dashboard'
+    id: 'dashboard'
   },
   {
     icon: null,
     label: 'Trade ideas',
-    artboard_ID: 'tradeIdeas'
+    id: 'tradeIdeas'
   },
   {
     icon: null,
     label: 'Bookmarks',
-    artboard_ID: 'bookmarks'
+    id: 'bookmarks'
   }
 ]
 
@@ -45,10 +45,11 @@ const getRandomReversion = () => {
 
 const getCounts = () => {
   const rows = [...document.querySelectorAll('.ideaRow')]
+  const numIndexed = rows.filter(r => r.classList.contains('isIndexed')).length
 
   return {
-    numIdeas: rows.length,
-    numIndexed: rows.filter(row => row.classList.contains('isIndexed')).length,
+    numIdeas: rows.length - numIndexed,
+    numIndexed,
     numNew: rows.filter(row => row.classList.contains('isNew')).length
   }
 }
