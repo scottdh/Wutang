@@ -41,16 +41,17 @@ const addFilterCard = filter => {
       </div>
       <ol>
         <li>
-          <strong>${numIndexed}</strong> opportunities
+          <strong>${numIndexed}</strong> 
+          opportunitie${numIndexed === 1 ? '' : 's'}
           ${
             numNew
               ? `<span class="highlight new-ideas">${numNew} new</span>`
               : ''
           }
         </li>
-        <li><strong>${numIdeas}</strong> ideas</li>
+        <li><strong>${numIdeas}</strong> idea${numIdeas === 1 ? '' : 's'}</li>
       </ol>
-      <div class="table_footer">
+      <div class="filterCard__footer">
         <button class="Button Button--secondary Button--link viewIdeas">View ideas &rarr;</button>
       </div>
       <button class="Button Button--secondary Button--link deleteFilter"><i class="fas fa-trash-alt"></i></button>

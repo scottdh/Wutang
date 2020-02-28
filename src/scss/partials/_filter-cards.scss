@@ -20,6 +20,11 @@
     text-decoration: none;
   }
 
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .deleteFilter {
     position: absolute;
     top: 1.15rem;
