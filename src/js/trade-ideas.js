@@ -42,7 +42,7 @@ const addFilterCard = filter => {
       <ol>
         <li>
           <strong>${numIndexed}</strong> 
-          opportunitie${numIndexed === 1 ? '' : 's'}
+          opportunit${numIndexed === 1 ? 'y' : 'ies'}
           ${
             numNew
               ? `<span class="highlight new-ideas">${numNew} new</span>`
