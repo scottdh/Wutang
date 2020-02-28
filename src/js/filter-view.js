@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash'
 import { getLocal, setLocal, getCounts } from './utils'
-import { createIdeasTables, createNav } from './generic'
+import { createIdeasTables, createNav, createFilters } from './generic'
 import {
   toggleFilter,
   toggleFilters,
@@ -41,6 +41,7 @@ const populatePage = () => {
 
 // Init
 createNav()
+createFilters()
 populatePage()
 setLocal('FILTERS', activeFilter.filters)
 updateFilters(activeFilter.filters)

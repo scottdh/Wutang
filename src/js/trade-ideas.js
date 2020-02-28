@@ -1,5 +1,5 @@
 import { getLocal, setLocal } from './utils'
-import { createIdeasTables, createNav } from './generic'
+import { createIdeasTables, createNav, createFilters } from './generic'
 import {
   toggleFilter,
   toggleFilters,
@@ -89,6 +89,7 @@ const toggleActions = (disabled = true) => {
 
 // Init
 createNav()
+createFilters()
 
 const presetFilters = getLocal('FILTERS') || {}
 if (Object.entries(presetFilters).length) {

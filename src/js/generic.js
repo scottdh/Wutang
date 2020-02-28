@@ -114,9 +114,66 @@ export const createIdeasTables = (filters = {}) => {
       </table>
     `
     table.innerHTML = html
-
-    // document
-    //   .querySelectorAll('.isIndexed:last-child')
-    //   .classList.add('ideaSeperator')
   })
+}
+
+export const createFilters = () => {
+  const form = document.getElementById('filterForm')
+  const filterOptions = [
+    {
+      id: 'type',
+      label: 'Type',
+      options: ['Senior', 'Subordinated']
+    },
+    {
+      id: 'country_of_risk',
+      label: 'Country',
+      options: ['China', 'USA', 'Germany']
+    },
+    {
+      id: 'industry_group',
+      label: 'Industry',
+      options: ['Consumer Goods', 'Financials', 'Healthcare']
+    },
+    {
+      id: 'bb_composite',
+      label: 'Rating',
+      options: ['A', 'BBB', 'BB', 'B']
+    },
+    {
+      id: 'maturity',
+      label: 'Maturity',
+      options: ['1 - 2 years', '3 - 5 years', '6 - 10 years']
+    }
+  ]
+  let html = ''
+
+  if (form) {
+    html = `<div class="FilterRow">     
+        <div class="Filters">`
+
+    filterOptions.forEach(({ id, label, options }) => {
+      html += `<div class="Filter">
+          <input hidden type="checkbox" class="Filter__checkbox" />
+          <label for="${id}" class="Filter__label">${label}</label>
+          <div class="dropdown-content FilterGroup">
+            ${options
+              .map(
+                option => `
+                <label class="group-label FilterGroup__label">
+                  <input hidden type="checkbox" name="${id}" value="${option}" />
+                  <span class="label">${option}</span>
+                  <span class="FilterGroup__count">(0)</span>
+                </label>`
+              )
+              .join('')}
+          </div>
+        </div>`
+    })
+
+    html += `</div>
+    </div>`
+  }
+
+  form.innerHTML = html
 }
