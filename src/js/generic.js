@@ -113,84 +113,83 @@ export const createIdeasTables = (filters = {}) => {
 var monitorList = [];
 
 const createMonitorTable = function() {
-  console.log(monitorList);
   document.querySelectorAll(".monitor_table").forEach(table => {
-    let html = `
-  <table>
-  <thead>
-    <th scope="col">Bond</th>
-    <th scope="col">Buy</th>
-    <th scope="col">Sell</th>
-    <th scope="col">Ideas</th>
-  </thead>
-  <tbody>
-    `;
+    let html = null;
+    if (monitorList.length < 1) {
+      html = `
+      <div id="montor_table_emptyState">
+      <h3>No bonds yet added</h3>
+      <p>Add Bonds you are interested in monitoring and Katana will alert you when they appear in idea pairs, provide insights and help you discover ideas with similar bonds. </p>
+      </div>
+      `;
+    } else {
+      html = `
+      <table>
+      <thead>
+        <th scope="col">Bond</th>
+        <th scope="col">Buy</th>
+        <th scope="col">Sell</th>
+        <th scope="col">Ideas</th>
+      </thead>
+      <tbody>`;
 
-    html += monitorList
-      .map(row => {
-        const { name, amountBuySide, amountSellSide, ideas } = row;
-        return `
-      <tr>
-      <td>${name}</td>
-      <td class=${
-        amountBuySide > 0 ? "buySideColor" : "secondary"
-      }>${amountBuySide}</td>
-      <td class=${
-        amountSellSide > 0 ? "sellSideColor" : "secondary"
-      }>${amountSellSide}</td>
-      <td>${ideas}</td>
-      <td></td>
-    </tr>
-        `;
-      })
-      .join("");
+      html += monitorList
+        .map(row => {
+          const { name, amountBuySide, amountSellSide, ideas } = row;
+          return `
+          <tr>
+          <td>${name}</td>
+          <td class=${
+            amountBuySide > 0 ? "buySideColor" : "secondary"
+          }>${amountBuySide}</td>
+          <td class=${
+            amountSellSide > 0 ? "sellSideColor" : "secondary"
+          }>${amountSellSide}</td>
+          <td>${ideas}</td>
+          <td></td>
+        </tr>
+            `;
+        })
+        .join("");
 
-    html += `</tbody>
-    </table>
-    <div class="tableFooter">
-     
-    </div>
-  `;
+      html += `</tbody>
+        </table>
+        <div class="tableFooter">
+         
+        </div>
+      `;
+    }
     table.innerHTML = html;
   });
 };
 
 const addISIN = function(e) {
   if (!e.target.id === "addISIN") return;
+
   e.preventDefault();
+  if (document.querySelector("#isin").value.length < 2) return;
 
-  if (Math.random() < 0.3) {
-  }
-  const getRandom = () => {
-    var min = 0;
-    var max = 12;
-    var random = Math.floor(Math.random() * (max - min) + min);
-    return random;
-  };
-
-  const getRandomIdea = () => {
-    var min = 0;
-    var max = 180;
+  const getRandom = (min, max) => {
     var random = Math.floor(Math.random() * (max - min) + min);
     return random;
   };
 
   if (Math.random() < 0.5) {
     monitorList.push({
-      name: securities[getRandom()].name,
+      name: securities[monitorList.length].name,
       amountSellSide: 0,
       amountBuySide: 0,
-      ideas: getRandomIdea()
+      ideas: getRandom(0, 120)
     });
   } else {
     monitorList.push({
-      name: securities[getRandom()].name,
-      amountSellSide: getRandom(),
-      amountBuySide: getRandom(),
-      ideas: getRandomIdea()
+      name: securities[monitorList.length].name,
+      amountSellSide: getRandom(0, 12),
+      amountBuySide: getRandom(0, 12),
+      ideas: getRandom(0, 120)
     });
   }
-
+  document.querySelector("#isin").value = "";
   createMonitorTable();
 };
 
