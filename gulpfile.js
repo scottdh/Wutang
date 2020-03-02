@@ -60,7 +60,11 @@ gulp.task('scripts', () => {
   }
 
   return gulp
-    .src(['./src/js/trade-ideas.js', './src/js/filter-view.js'])
+    .src([
+      './src/js/trade-ideas.js',
+      './src/js/filter-view.js',
+      './src/js/monitor.js'
+    ])
     .pipe(named())
     .pipe(webpack(settings, null, browserSync.reload))
     .pipe(gulp.dest('./dist/js'))
