@@ -11,8 +11,8 @@ const createMonitorTable = () => {
     if (list.length < 1) {
       html = `
       <div id="montor_table_emptyState">
-      <h3>No bonds yet added</h3>
-      <p>Add Bonds you are interested in monitoring and Katana will alert you when they appear in idea pairs, provide insights and help you discover ideas with similar bonds. </p>
+        <h3>No bonds yet added</h3>
+        <p>Add Bonds you are interested in monitoring and Katana will alert you when they appear in idea pairs, provide insights and help you discover ideas with similar bonds. </p>
       </div>
       `
     } else {

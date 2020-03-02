@@ -7,8 +7,24 @@
   color: $shiny;
 }
 
-.subtle-text {
-  color: $secondaryText;
+.secondary {
+  color: $secondary;
+}
+
+.shiny {
+  color: $shiny;
+}
+
+.buySideColor {
+  color: $buySide;
+}
+
+.sellSideColor {
+  color: $sellSide;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 .center-vertically {

@@ -1,9 +1,17 @@
+// Typography
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap");
+
+$semiBold: 300;
+$regular: 400;
+$semiBold: 600;
+$bold: 700;
+
 // Colours
 $background: hsla(225, 31, 20, 1);
-$secondaryText: hsla(0, 0, 100, 0.5);
+$primary: rgba(1, 168, 181, 1);
+$secondary: hsla(0, 0, 100, 0.5);
 $buySide: rgba(0, 230, 169, 1);
 $sellSide: hsla(335, 70, 57, 1);
-$primary: rgba(1, 168, 181, 1);
 $shiny: rgba(243, 174, 75, 1);
 
 $white: rgba(255, 255, 255, 1);

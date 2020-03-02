@@ -108,11 +108,21 @@
       content: '\00BB';
       margin-left: 1rem;
       padding: 0 0.5rem;
-      color: $secondaryText;
+      color: $secondary;
     }
   }
 
   &__link {
     text-decoration: none;
+  }
+}
+
+.bondName {
+  h1 {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    margin-bottom: 0;
   }
 }

@@ -5,7 +5,7 @@
   margin: 0 auto 16px;
   font-size: 1rem;
   max-width: 440px;
-  border: 1px $secondaryText solid;
+  border: 1px $secondary solid;
   border-radius: 4px;
 
   div {
@@ -13,7 +13,7 @@
 
     label {
       display: inline;
-      color: $secondaryText;
+      color: $secondary;
       margin-right: 8px;
     }
     p {
@@ -83,7 +83,7 @@
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         border-bottom: 1px solid $white20;
-        color: $secondaryText;
+        color: $secondary;
 
         &:first-child {
           border: 0;
@@ -98,7 +98,7 @@
   }
 
   tfoot {
-    color: $secondaryText;
+    color: $secondary;
     font-weight: 400;
 
     td {

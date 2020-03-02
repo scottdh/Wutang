@@ -5,7 +5,7 @@
   border-radius: 0.25rem;
   margin-bottom: 1rem;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
-  border: 1px solid $secondaryText;
+  border: 1px solid $secondary;
   background-color: hsla(225, 31, 16, 1);
 }
 
@@ -172,7 +172,7 @@
   justify-content: center;
   color: $primary;
   padding: 1rem 1rem;
-  border: 1px dashed $secondaryText;
+  border: 1px dashed $secondary;
   font-weight: 600;
   border-radius: 4px;
   text-align: center;
