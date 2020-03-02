@@ -56,7 +56,7 @@ const createMonitorTable = () => {
 const addISIN = e => {
   e.preventDefault()
 
-  if (!e.target.id === 'addISIN') return
+  if (e.target.id !== 'addISIN') return
 
   const storedList = getLocal('MONITOR') || []
 
