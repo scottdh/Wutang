@@ -72,7 +72,9 @@ export const createIdeasTables = (filters = {}, data = securities) => {
           <th>Sell</th>
           <th>Z-score</th>
           <th>Reversion</th>
-          <th class="similarity hide">${rows[0].similarityColLabel || ''}</th>
+          <th class="similarity hide">
+            ${rows.length ? rows[0].similarityColLabel : ''}
+          </th>
         </thead>
         <tbody class="indexed">
       `
