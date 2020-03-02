@@ -82,9 +82,10 @@ export const createIdeasTables = (filters = {}) => {
         const { isIndexed, isNew, isMonitored, name } = row
 
         return `
-            <tr class="ideaRow ${isIndexed ? 'isIndexed' : ''} ${
-          isNew ? 'isNew' : ''
-        }">
+            <tr class="ideaRow 
+              ${isIndexed ? 'isIndexed' : ''} 
+              ${isNew ? 'isNew' : ''}
+            ">
               <td>
                 <div class="status">
                   ${isNew ? '<span class="new-indicator">·</span>' : ''}
