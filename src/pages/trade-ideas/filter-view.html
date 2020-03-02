@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Trade Ideas: Saved Filters &#187; Filter View</title>
+  </head>
+  <body>
+    <div class="artboard" id="filterView">
+      <nav id="main-nav"></nav>
+      <div class="view">
+        <div class="optionsBar">
+          <button id="deleteFilter" class="Button Button--empty Button--tertiary Button--link">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+        <h1><span class="filterName"></span></h1>
+        <div id="metaData" class="meta-data"></div>
+        <ol>
+          <li>
+            <strong id="numIndexed"></strong> opportunities
+            <span class="highlight new-ideas"><span id="numNew"></span> new</span>
+          </li>
+          <li><strong id="numIdeas"></strong> alternatives</li>
+        </ol>
+        <div class="filtersArea">
+          <form id="filterForm" method="GET" action="/" class="FiltersForm"></form>
+          <div class="FilterActions">
+            <button id="updateFilter" class="Filters__action Button Button--small" disabled>Update</button>
+          </div>
+        </div>
+
+        <div class="tradeIdeas_table"></div>
+      </div>
+      <div class="sidebar">
+        <div class="profileMenu">
+          <h3>Eve Moneypenny</h3>
+          <p class="secondary">DEMO</p>
+        </div>
+      </div>
+    </div>
+    <script src="/js/filter-view.bundle.js"></script>
+  </body>
+</html>

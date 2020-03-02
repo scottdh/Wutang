@@ -1,0 +1,18 @@
+@import "plugins/fontawesome/scss/fontawesome";
+@import "plugins/fontawesome/scss/solid";
+@import "plugins/fontawesome/scss/brands";
+
+@import "config/normalise";
+@import "config/settings";
+@import "config/elements";
+@import "config/utility";
+@import "config/structure";
+
+@import "partials/button";
+@import "partials/nav";
+@import "partials/nav-toggle";
+@import "partials/ideas-table";
+@import "partials/filters";
+@import "partials/filter-cards";
+@import "partials/monitor";
+@import "partials/similarity";

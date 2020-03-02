@@ -1,0 +1,62 @@
+.Button {
+  background-color: $primary;
+  border: none;
+  border-radius: 3px;
+  color: $white;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1.5rem;
+  transition: border color 0.5s;
+  outline: none;
+  user-select: none;
+
+  &--small {
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  &--is-loading {
+    opacity: 0.3;
+    cursor: no-drop;
+  }
+
+  &--secondary {
+    color: $primary;
+    background: none;
+  }
+
+  &--tertiary {
+    color: $secondary;
+    background: none;
+  }
+
+  &--empty {
+    border: none;
+    background: none;
+  }
+
+  &--link {
+    @extend .Button--empty;
+    padding: 0;
+  }
+
+  &--disabled,
+  &:disabled,
+  &[disabled] {
+    background-color: $white20;
+    border-color: $white20;
+    color: $white50;
+    cursor: not-allowed;
+
+    &.Button--secondary {
+      background: none;
+    }
+  }
+}

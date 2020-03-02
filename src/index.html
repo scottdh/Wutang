@@ -4,138 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Page Contents</title>
   </head>
   <body>
-    <div class="artboard" id="pairDetails">
-      <nav></nav>
-      <div class="view">
-        <div class="header">
-          <div class="buySide">
-            <div class="bondName">
-              <h3 class="preTitle">Guangzhou R&F Properties</h3>
-              <h1>GZRFPR <span class="noWrap">5 7/8</span> 13/02/2023</h1>
-              <h3>
-                XS1720054383 (USD)
-              </h3>
-            </div>
-            <div class="meta-data">
-              <div class="box">China</div>
-              <div class="box">Financials</div>
-              <div class="box highRisk">BB-</div>
-              <div class="box highRisk">3-5 years</div>
-            </div>
-          </div>
-          <div class="bookmark">
-            <div class="bookmarkInfo active">
-              <div class="icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <g fill="#F3AE4B">
-                    <path
-                      d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-              <h2>SH</h2>
-            </div>
-            <p>a day ago</p>
-          </div>
-          <div class="sellSide">
-            <div class="bondName">
-              <h3 class="preTitle">
-                Zhenro Properties Group Limited
-              </h3>
-              <h1 class="ticker">
-                ZHPRHK
-                <span class="noWrap">9 3/20</span> 08/03/2022
-              </h1>
-              <h3>
-                XS1960071303 (USD)
-              </h3>
-            </div>
-            <div class="" style="height: 8px; margin-right: 12px"></div>
-            <div class="meta-data">
-              <div class="box">China</div>
-              <div class="box">Financials</div>
-              <div class="box">B</div>
-              <div class="box">1-2 years</div>
-            </div>
-          </div>
-        </div>
-        <div id="compareStuff" class="compareStats">
-          <div>
-            <label for="">Z-Score</label>
-            <p>3.05</p>
-          </div>
-          <div>
-            <label for="">Similarity</label>
-            <p>0.89</p>
-          </div>
-          <div>
-            <label for="">Reversion</label>
-            <p>22bp</p>
-          </div>
-        </div>
-        <!-- End of header -->
-        <div class="graphs">
-          <img src="./img/graphs.png" alt="graphs" />
-        </div>
-      </div>
-      <div class="sidebar">
-        <div class="profileMenu">
-          <h3>Eve Moneypenny</h3>
-          <p class="secondary">DEMO</p>
-        </div>
+    <div class="page-contents">
+      <div class="page-contents__section">
+        <img id="main-logo" src="/img/katana_logo_platform.png" />
+        <h2 class="page-contents__title">Contents</h2>
+        <ol class="page-contents__list">
+          <li class="page-contents__item">
+            <a class="page-contents__link" href="/pages/trade-ideas/">
+              <span class="secondary">Trade Ideas:</span> Saved Filters
+            </a>
+          </li>
+          <li class="page-contents__item">
+            <a class="page-contents__link" href="/pages/similarity/">
+              <span class="secondary">Trade Ideas:</span> Similarity
+            </a>
+          </li>
+          <li class="page-contents__item">
+            <a class="page-contents__link" href="/pages/monitor/">
+              <span class="secondary">Monitor:</span> New Section
+            </a>
+          </li>
+        </ol>
       </div>
     </div>
-
-    <div class="artboard" id="tradeIdeas">
-      <nav></nav>
-      <div class="view">
-        <h1>Trade ideas</h1>
-        <div class="filtersArea">
-          <p class="d">
-            Use filters to group trade ideas that align to your strategy for
-            easy tracking.
-          </p>
-          <h3 class="secondary" style="text-transform: uppercase;">
-            Saved filters
-          </h3>
-          <div class="filterGroup">
-            <div class="filtername">
-              <div class="meta-data">
-                <div class="meta-tag">China</div>
-                <div class="meta-tag">Financials</div>
-                <div class="meta-tag">> BB-</div>
-                <div class="meta-tag">3-5 years</div>
-                <div class="meta-tag">Industry must match</div>
-              </div>
-              <div class="tradeIdeas_table"></div>
-            </div>
-          </div>
-          <div class="newFilter">+ New filter</div>
-        </div>
-
-        <h3 class="secondary" style="text-transform: uppercase;">
-          All ideas
-        </h3>
-
-        <div class="tradeIdeas_table"></div>
-      </div>
-      <div class="sidebar">
-        <div class="profileMenu">
-          <h3>Eve Moneypenny</h3>
-          <p class="secondary">DEMO</p>
-        </div>
-      </div>
-    </div>
-    <script src="./js/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,44 @@
+// Generic classes
+.hide {
+  display: none;
+}
+
+.highlight {
+  color: $shiny;
+}
+
+.secondary {
+  color: $secondary;
+}
+
+.shiny {
+  color: $shiny;
+}
+
+.buySideColor {
+  color: $buySide;
+}
+
+.sellSideColor {
+  color: $sellSide;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.center-vertically {
+  vertical-align: middle;
+}
+
+.new-ideas {
+  @extend small;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.monitored {
+  background-color: white;
+  color: $background;
+}
