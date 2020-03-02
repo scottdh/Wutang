@@ -1,13 +1,13 @@
-#monitor form {
-  margin-bottom: 2rem;
+#monitor {
+  form {
+    margin-bottom: 2rem;
+  }
+
+  .bond-name {
+    cursor: pointer;
+  }
 }
 
-#montor_table_emptyState {
+#monitor-no-bonds {
   margin: 2rem auto;
-  p {
-    color: $secondary;
-  }
-  // width: 66.66%;
-  // text-align: center;
-  // border-top: 1px solid $secondary;
 }

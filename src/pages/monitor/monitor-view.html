@@ -5,21 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Monitor</title>
+    <title>Monitor &#187; View</title>
   </head>
   <body>
     <div class="artboard" id="monitor">
       <nav id="main-nav"></nav>
       <div class="view">
-        <h1>Monitor</h1>
-        <form>
-          <label for="isin">ISIN</label>
-          <div>
-            <input type="text" id="isin" />
-            <button class="Button" id="addISIN">Add</button>
-          </div>
-        </form>
-        <div id="monitor-table__container"></div>
+        <h1><span id="bondName"></span></h1>
+        <div class="tradeIdeas_table"></div>
       </div>
       <div class="sidebar">
         <div class="profileMenu">
@@ -28,6 +21,6 @@
         </div>
       </div>
     </div>
-    <script src="/js/monitor.bundle.js"></script>
+    <script src="/js/monitor-view.bundle.js"></script>
   </body>
 </html>

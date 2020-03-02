@@ -43,12 +43,12 @@ export const createNav = () => {
   })
 }
 
-export const createIdeasTables = (filters = {}) => {
+export const createIdeasTables = (filters = {}, data = securities) => {
   const appliedFilters = Object.values(filters).length
     ? Object.values(filters).reduce((mem, filter) => [...mem, ...filter])
     : []
   const rows = !!appliedFilters.length
-    ? securities.filter(row => {
+    ? data.filter(row => {
         let shouldDisplay = {}
 
         Object.keys(filters).filter(key => {
@@ -59,7 +59,7 @@ export const createIdeasTables = (filters = {}) => {
 
         return !Object.values(shouldDisplay).includes(false)
       })
-    : securities
+    : data
 
   document.querySelectorAll('.tradeIdeas_table').forEach(table => {
     const lastIndexedRow = rows.find(row => !row.isIndexed)
@@ -79,7 +79,7 @@ export const createIdeasTables = (filters = {}) => {
 
     html += rows
       .map((row, index) => {
-        const { isIndexed, isNew, isMonitored, name } = row
+        const { isIndexed, isNew, isMonitored, name, buyName, sellName } = row
 
         return `
             <tr class="ideaRow 
@@ -92,8 +92,12 @@ export const createIdeasTables = (filters = {}) => {
                   ${isIndexed ? KatanaIndexLogo : ''}
                 </div>
               </td>
-              <td class="buySide ${isMonitored ? 'monitored' : ''}">${name}</td>
-              <td class="sellSide">${name}</td>
+              <td class="buySide ${sellName ? 'monitored' : ''}">
+                ${buyName || name}
+              </td>
+              <td class="sellSide ${buyName ? 'monitored' : ''}">
+                ${sellName || name}
+              </td>
               <td class=>${getRandomZscore()}</td>
               <td class=>${getRandomReversion()}bp</td>
             </tr>
