@@ -56,12 +56,13 @@ const createMonitorTable = () => {
 const addISIN = e => {
   e.preventDefault()
 
-  if (e.target.id !== 'addISIN') return
+  if (
+    e.target.id !== 'addISIN' ||
+    document.querySelector('#isin').value.length < 2
+  )
+    return
 
   const storedList = getLocal('MONITOR') || []
-
-  if (document.querySelector('#isin').value.length < 2) return
-
   const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min)
 
   if (Math.random() < 0.5) {
