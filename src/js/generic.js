@@ -12,7 +12,7 @@ export const createNav = () => {
     const { id } = nav.closest('div.artboard')
     let html = '<a href="#" id="mainLogo" class="mainLogo"></a>'
 
-    if (['filterView'].includes(id)) {
+    if (['filterView', 'monitorView'].includes(id)) {
       html += `
         <ul>
           <li id="back" class="navItem navItem--no-border">
