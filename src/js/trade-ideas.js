@@ -41,17 +41,16 @@ const addFilterCard = filter => {
       </div>
       <ol>
         <li>
-          <strong>${numIndexed}</strong> 
-          opportunit${numIndexed === 1 ? 'y' : 'ies'}
+          <strong>${numIndexed}</strong> Katana grade
           ${
             numNew
               ? `<span class="highlight new-ideas">${numNew} new</span>`
               : ''
           }
         </li>
-        <li><strong>${numIdeas}</strong> alternative${
-    numIdeas === 1 ? '' : 's'
-  }</li>
+        <li>
+          <strong>${numIdeas}</strong> Alternative${numIdeas === 1 ? '' : 's'}
+        </li>
       </ol>
       <div class="filterCard__footer">
         <button class="Button Button--secondary Button--link viewIdeas">View ideas &rarr;</button>
