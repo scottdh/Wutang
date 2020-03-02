@@ -67,19 +67,19 @@ export const createIdeasTables = (filters = {}, data = securities) => {
     let html = `
       <table class="tradeIdeas">
         <thead>
-          <th scope="col"></th>
-          <th scope="col">Buy</th>
-          <th scope="col">Sell</th>
-          <th scope="col">Z-score</th>
-          <th scope="col">Reversion</th>
           <th></th>
+          <th>Buy</th>
+          <th>Sell</th>
+          <th>Z-score</th>
+          <th>Reversion</th>
+          <th class="similarity hide">${rows[0].similarityColLabel || ''}</th>
         </thead>
         <tbody class="indexed">
       `
 
     html += rows
       .map((row, index) => {
-        const { isIndexed, isNew, isMonitored, name, buyName, sellName } = row
+        const { isIndexed, isNew, name, buyName, sellName, similarity } = row
 
         return `
             <tr class="ideaRow 
@@ -100,10 +100,16 @@ export const createIdeasTables = (filters = {}, data = securities) => {
               </td>
               <td class=>${getRandomZscore()}</td>
               <td class=>${getRandomReversion()}bp</td>
+              ${similarity ? `<td class="similarity">${similarity}</td>` : ``}
             </tr>
             ${
               index === seperatorIndex
-                ? '</tbody><tbody class="notIndexed"><tr><th></th><th colspan="4">Alternatives</th></tr>'
+                ? `</tbody><tbody class="notIndexed">
+                  <tr>
+                    <th></th>
+                    <th colspan="${similarity ? '5' : '4'}">Alternatives</th>
+                  </tr>
+                `
                 : ''
             }
           `

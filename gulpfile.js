@@ -63,6 +63,7 @@ gulp.task('scripts', () => {
     .src([
       './src/js/trade-ideas.js',
       './src/js/filter-view.js',
+      './src/js/similarity.js',
       './src/js/monitor.js',
       './src/js/monitor-view.js'
     ])
