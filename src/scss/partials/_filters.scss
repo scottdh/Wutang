@@ -201,7 +201,7 @@
   margin: 0 2rem 1rem 0;
   padding: 0.25rem;
   color: $white;
-  font-weight: inherit;
+  font-weight: $semiBold;
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.3);
   outline: none;
@@ -209,4 +209,6 @@
 
 #filterView #editName {
   width: 97%;
+  font-size: inherit;
+  font-weight: $bold;
 }

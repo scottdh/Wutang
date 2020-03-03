@@ -13,7 +13,6 @@
   position: relative;
   flex: 1;
   padding: 0 2rem;
-  padding-top: 4rem;
 }
 
 .overview {
@@ -104,6 +103,8 @@
   }
 
   &__item {
+    @extend .secondary;
+
     &:before {
       content: '\00BB';
       margin-left: 1rem;

@@ -11,6 +11,9 @@
     <div class="artboard" id="tradeIdeas">
       <nav id="main-nav"></nav>
       <div class="view">
+        <div class="search-bar">
+          <input class="search-bar__input" placeholder="Search ISIN, issuer or country">
+        </div>
         <h1>Trade ideas</h1>
         <div class="savedFilters">
           <h3 class="secondary" style="text-transform: uppercase;">
@@ -40,19 +43,15 @@
         <ul class="ideasSummary">
           <li><strong>Today:</strong></li>
           <li>
-            <img
-              class="center-vertically"
-              src="/img/katana_logo_inIndex.png"
-            /><abbr
+            <img class="center-vertically" src="/img/katana_logo_inIndex.png" />
+              15 <abbr
               class="helper-tip"
               title="Katana grade ideas are those Katana's algorithm recognises as most likely to be mispriced, and on which the Katana Index performance is measured."
-              >15 Katana grade</abbr
+              >Katana grade</abbr
             >
-            <abbr
-              class="highlight new-ideas helper-tip"
-              title="Katana grade ideas generated as of the previous day."
-              >5 new</abbr
-            >
+            <span class="highlight new-ideas">
+              5 <abbr class="helper-tip" title="Katana grade ideas generated as of the previous day.">new</abbr>
+            </span>
           </li>
           <li>
             37,471

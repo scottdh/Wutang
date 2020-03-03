@@ -1,0 +1,29 @@
+.search-bar {
+  padding-bottom: 2rem;
+
+  &:before {
+    content: "";
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    opacity: 0.5;
+    vertical-align: middle;
+    background: url("data:image/svg+xml,%3Csvg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.4441 5.98435C11.4441 7.32497 11.0383 8.49801 10.3078 9.50348L12.7427 12.1009C13.0674 12.4361 13.0674 12.9388 12.7427 13.274C12.5804 13.4416 12.3369 13.5253 12.1746 13.5253C12.0123 13.5253 11.7688 13.4416 11.6064 13.274L9.17153 10.7603C8.27872 11.5144 7.06126 11.9334 5.76264 11.9334C2.59725 11.9334 0 9.25211 0 5.98435C0 2.71658 2.59725 0.0353394 5.76264 0.0353394C8.92803 0.0353394 11.4441 2.71658 11.4441 5.98435ZM1.62329 5.98434C1.62329 8.33043 3.49006 10.1738 5.76265 10.1738C8.03524 10.1738 9.90201 8.33043 9.90201 5.98434C9.90201 3.63825 8.03524 1.71111 5.76265 1.71111C3.49006 1.71111 1.62329 3.63825 1.62329 5.98434Z' fill='white'/%3E%3C/svg%3E") no-repeat center center / contain;
+  }
+
+  &__input {
+    min-width: 360px;
+    padding: 0.25rem 0.75rem;
+    border: 0;
+    color: $white;
+    background-color: transparent;
+    outline: none;
+    
+    &::placeholder {
+      color: $secondary;
+      opacity: 1;
+    }
+  }
+}
