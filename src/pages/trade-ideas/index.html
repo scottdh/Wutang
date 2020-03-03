@@ -14,35 +14,77 @@
         <h1>Trade ideas</h1>
         <div class="savedFilters">
           <h3 class="secondary" style="text-transform: uppercase;">
-            Saved filters <button id="toggleSaved" class="Button Button--empty Button--small Button--secondary">Hide</button>
+            Saved filters
+            <button
+              id="toggleSaved"
+              class="Button Button--empty Button--small Button--secondary"
+            >
+              Hide
+            </button>
           </h3>
 
           <div class="savedFilters__body">
-            <p id="noSavedFilters" class="secondary">
-              You currently have no saved filters. Filter the table below to find
-              ideas that align to your stategy and save them for easier retrieval
-              later.
+            <p id="noSavedFilters">
+              <strong>Create your first filter!</strong> <br />Filter the ideas
+              table below to find ideas that match your investment strategy and
+              hit save. Katana will let you know when new ideas that match each
+              filter appear.
             </p>
-            
+
             <div id="SavedFilterList" class="filterCard_grid"></div>
           </div>
         </div>
         <h3 class="secondary" style="text-transform: uppercase;">
           All ideas
         </h3>
-        <ul class="ideasSummary secondary">
+        <ul class="ideasSummary">
           <li><strong>Today:</strong></li>
           <li>
-            <img class="center-vertically" src="/img/katana_logo_inIndex.png" /><abbr class="helper-tip" title="Katana grade ideas are those Katana's algorithm recognises as most likely to be mispriced, and on which the Katana Index performance is measured.">15 Katana grade</abbr>
-            <abbr class="highlight new-ideas helper-tip" title="Katana grade ideas generated as of the previous day.">5 new</abbr>
+            <img
+              class="center-vertically"
+              src="/img/katana_logo_inIndex.png"
+            /><abbr
+              class="helper-tip"
+              title="Katana grade ideas are those Katana's algorithm recognises as most likely to be mispriced, and on which the Katana Index performance is measured."
+              >15 Katana grade</abbr
+            >
+            <abbr
+              class="highlight new-ideas helper-tip"
+              title="Katana grade ideas generated as of the previous day."
+              >5 new</abbr
+            >
           </li>
-          <li>37,471 <abbr class="helper-tip" title="Alternative ideas are those with a lower probability of mean-reversion.">Alternatives</abbr></li>
+          <li>
+            37,471
+            <abbr
+              class="helper-tip"
+              title="Alternative ideas are those with a lower probability of mean-reversion."
+              >Alternatives</abbr
+            >
+          </li>
         </ul>
         <div class="filtersArea">
-          <form id="filterForm" method="GET" action="/" class="FiltersForm"></form>
+          <form
+            id="filterForm"
+            method="GET"
+            action="/"
+            class="FiltersForm"
+          ></form>
           <div class="FilterActions">
-            <button id="clearFilter" class="Filters__action Button Button--small Button--secondary" disabled>Reset</button>
-            <button id="saveFilter" class="Filters__action Button Button--small" disabled>Save</button>
+            <button
+              id="clearFilter"
+              class="Filters__action Button Button--small Button--secondary"
+              disabled
+            >
+              Reset
+            </button>
+            <button
+              id="saveFilter"
+              class="Filters__action Button Button--small"
+              disabled
+            >
+              Save
+            </button>
           </div>
         </div>
 
