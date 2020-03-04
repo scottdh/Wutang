@@ -12,7 +12,10 @@
       <nav id="main-nav"></nav>
       <div class="view">
         <div class="search-bar">
-          <input class="search-bar__input" placeholder="Search ISIN, issuer or country">
+          <input
+            class="search-bar__input"
+            placeholder="Search ISIN, issuer or country"
+          />
         </div>
         <h1>Trade ideas</h1>
         <div class="savedFilters">
@@ -27,11 +30,13 @@
           </h3>
 
           <div class="savedFilters__body">
-            <p id="noSavedFilters">
-              <strong>Create your first filter!</strong> <br />Filter the ideas
-              table below to find ideas that match your investment strategy and
-              hit save. Katana will let you know when new ideas that match each
-              filter appear.
+            <p id="noSavedFilters"></p>
+            <h3>Create your first filter</h3>
+            <p class="secondary">
+              Filter the ideas table below to find ideas that match your
+              investment strategy and hit save. You'll not only have faster
+              access to those ideas, but Katana will also let you know when new
+              ideas that match each filter appear each day.
             </p>
 
             <div id="SavedFilterList" class="filterCard_grid"></div>
@@ -44,13 +49,19 @@
           <li><strong>Today:</strong></li>
           <li>
             <img class="center-vertically" src="/img/katana_logo_inIndex.png" />
-              15 <abbr
+            15
+            <abbr
               class="helper-tip"
               title="Katana grade ideas are those Katana's algorithm recognises as most likely to be mispriced, and on which the Katana Index performance is measured."
               >Katana grade</abbr
             >
             <span class="highlight new-ideas">
-              5 <abbr class="helper-tip" title="Katana grade ideas generated as of the previous day.">new</abbr>
+              5
+              <abbr
+                class="helper-tip"
+                title="Katana grade ideas generated as of the previous day."
+                >new</abbr
+              >
             </span>
           </li>
           <li>
