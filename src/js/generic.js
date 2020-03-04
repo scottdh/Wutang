@@ -109,7 +109,9 @@ export const createIdeasTables = (filters = {}, data = securities) => {
               </td>
               <td class=>${getRandomNumber()}</td>
               <td class=>${getRandomReversion()}bp</td>
-              <td class="similarity">${similarity || getRandomNumber()}</td>
+              <td class="similarity">
+                ${similarity || getRandomNumber(0.5, 1)}
+              </td>
             </tr>
             ${
               index === seperatorIndex
