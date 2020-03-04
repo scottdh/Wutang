@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   color: $white;
   background-color: $background;
 }
@@ -40,7 +41,7 @@ h3 {
   font-weight: 600;
   margin: 0;
   margin-bottom: 1rem;
-  
+
   &.preTitle {
     font-weight: normal;
     color: $secondary;
@@ -60,7 +61,7 @@ label {
   line-height: 1.5rem;
 }
 
-input[type=text] {
+input[type="text"] {
   padding: 0.5rem 1rem;
   line-height: 1.5rem;
   border-radius: 0.25rem;
@@ -70,6 +71,14 @@ input[type=text] {
   border: 0;
   color: $white;
   background-color: $secondary;
+}
+
+.filterName {
+  border: 1px solid transparent;
+}
+
+.filterName:hover {
+  border: 1px solid $secondary;
 }
 
 ol {
