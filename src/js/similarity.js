@@ -5,13 +5,11 @@ import { getRandomComparison } from './utils'
 
 const v = qs.parse(window.location.search.replace('?', '')).v || '1'
 const VERSION = parseInt(v)
-const LABELS = ['Similarity', 'Mismatch']
 
 const generateData = () =>
   securities.map(row => ({
     ...row,
-    similarity: getRandomComparison(VERSION),
-    similarityColLabel: LABELS[VERSION - 1] || LABELS[0]
+    similarity: getRandomComparison(VERSION)
   }))
 
 // Init

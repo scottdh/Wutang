@@ -29,22 +29,21 @@ const goBack = () => {
 }
 
 const getExpirySpan = security => {
-  var today = new Date.now()
+  const today = new Date.now()
   console.log(security.maturity_date - today)
 }
 
-const getRandomZscore = () => {
-  var min = 1
-  var max = 4
-  var random = Math.random() * (max - min) + min
-  var zScore = random.toFixed(2)
-  return zScore
+const getRandomNumber = (min = 1, max = 4, round = false) => {
+  const random = Math.random() * (max - min) + min
+  const fixed = random.toFixed(2)
+
+  return round ? Math.floor(fixed) : fixed
 }
 
 const getRandomReversion = () => {
-  var min = -20
-  var max = 100
-  var random = Math.floor(Math.random() * (max - min) + min)
+  const min = -20
+  const max = 100
+  const random = Math.floor(Math.random() * (max - min) + min)
   return random
 }
 
@@ -107,7 +106,7 @@ const setLocal = (name, value) =>
 export {
   goBack,
   getExpirySpan,
-  getRandomZscore,
+  getRandomNumber,
   getRandomReversion,
   getRandomComparison,
   KatanaIndexLogo,

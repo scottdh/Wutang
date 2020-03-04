@@ -1,6 +1,7 @@
+import qs from 'qs'
 import {
   goBack,
-  getRandomZscore,
+  getRandomNumber,
   getRandomReversion,
   KatanaIndexLogo,
   navItems
@@ -43,6 +44,14 @@ export const createNav = () => {
   })
 }
 
+const getSimilarityColLabel = () => {
+  const v = qs.parse(window.location.search.replace('?', '')).v || '1'
+  const VERSION = parseInt(v)
+  const LABELS = ['Similarity', 'Mismatch']
+
+  return LABELS[VERSION - 1] || LABELS[0]
+}
+
 export const createIdeasTables = (filters = {}, data = securities) => {
   const appliedFilters = Object.values(filters).length
     ? Object.values(filters).reduce((mem, filter) => [...mem, ...filter])
@@ -72,9 +81,7 @@ export const createIdeasTables = (filters = {}, data = securities) => {
           <th>Sell</th>
           <th>Z-score</th>
           <th>Reversion</th>
-          <th class="similarity hide">
-            ${rows.length ? rows[0].similarityColLabel : ''}
-          </th>
+          <th class="similarity">${getSimilarityColLabel()}</th>
         </thead>
         <tbody class="indexed">
       `
@@ -100,16 +107,16 @@ export const createIdeasTables = (filters = {}, data = securities) => {
               <td class="sellSide ${buyName ? 'monitored' : ''}">
                 ${sellName || name}
               </td>
-              <td class=>${getRandomZscore()}</td>
+              <td class=>${getRandomNumber()}</td>
               <td class=>${getRandomReversion()}bp</td>
-              ${similarity ? `<td class="similarity">${similarity}</td>` : ``}
+              <td class="similarity">${similarity || getRandomNumber()}</td>
             </tr>
             ${
               index === seperatorIndex
                 ? `</tbody><tbody class="notIndexed">
                   <tr>
                     <th></th>
-                    <th colspan="${similarity ? '5' : '4'}">Alternatives</th>
+                    <th colspan="5">Alternatives</th>
                   </tr>
                 `
                 : ''

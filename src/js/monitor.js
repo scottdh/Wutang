@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { createNav } from './generic'
-import { getLocal, setLocal } from './utils'
+import { getRandomNumber, getLocal, setLocal } from './utils'
 import { securities } from './json'
 
 const createMonitorTable = () => {
@@ -64,10 +64,9 @@ const addISIN = e => {
   if (document.querySelector('#isin').value.length < 2) return
 
   const storedList = getLocal('MONITOR') || []
-  const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min)
-  const numSellSide = Math.random() < 0.5 ? 0 : getRandom(0, 12)
-  const numBuySide = Math.random() < 0.5 ? 0 : getRandom(0, 12)
-  const numAlternatives = getRandom(0, 120)
+  const numSellSide = Math.random() < 0.5 ? 0 : getRandomNumber(0, 12, true)
+  const numBuySide = Math.random() < 0.5 ? 0 : getRandomNumber(0, 12, true)
+  const numAlternatives = getRandomNumber(0, 120, true)
 
   setLocal('MONITOR', [
     ...storedList,
